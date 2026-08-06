@@ -1,26 +1,60 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+	--background: #ffffff;
+	--foreground: #171717;
+
+	--brand-50: #eefbfa;
+	--brand-100: #d3f2f0;
+	--brand-500: #147a8c;
+	--brand-600: #0f5c6b;
+	--brand-700: #0c4a56;
+	--brand-900: #082e37;
+
+	--accent-100: #fce7f1;
+	--accent-500: #ec4899;
+	--accent-600: #db2777;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+	--color-brand-50: var(--brand-50);
+	--color-brand-100: var(--brand-100);
+	--color-brand-500: var(--brand-500);
+	--color-brand-600: var(--brand-600);
+	--color-brand-700: var(--brand-700);
+	--color-brand-900: var(--brand-900);
+
+	--color-accent-100: var(--accent-100);
+	--color-accent-500: var(--accent-500);
+	--color-accent-600: var(--accent-600);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+	background: var(--background);
+	color: var(--foreground);
+	font-family: var(--font-sans), ui-sans-serif, system-ui, Arial, Helvetica, sans-serif;
+}
+
+/* Frosted-glass surfaces, used over gradient/blob backgrounds */
+.glass {
+	background: rgb(255 255 255 / 0.6);
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+	border: 1px solid rgb(255 255 255 / 0.5);
+}
+
+.glass-dark {
+	background: rgb(8 46 55 / 0.55);
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+	border: 1px solid rgb(255 255 255 / 0.12);
+}
+
+/* Soft dot-grid texture for gradient art panels */
+.dot-grid {
+	background-image: radial-gradient(rgb(255 255 255 / 0.35) 1.5px, transparent 1.5px);
+	background-size: 18px 18px;
 }
