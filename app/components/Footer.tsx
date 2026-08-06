@@ -3,51 +3,49 @@ import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { siteConfig } from "@/app/lib/siteConfig";
 import { FacebookIcon, InstagramIcon, LinkedinIcon, XIcon } from "@/app/components/SocialIcons";
-import BlobBackground from "@/app/components/BlobBackground";
 
 export default function Footer() {
 	const year = new Date().getFullYear();
 
 	return (
-		<footer className="relative overflow-hidden bg-brand-900 text-white/80">
-			<BlobBackground variant="dark" />
-			<div className="relative max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+		<footer className="bg-ink text-cream/60">
+			<div className="max-w-7xl mx-auto px-6 py-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
 				<div>
-					<Image src="/logo.png" alt={siteConfig.name} width={1115} height={451} className="h-10 w-auto object-contain bg-white rounded-md px-2 py-1.5 mb-4" />
-					<p className="text-sm leading-relaxed text-white/60">
+					<Image src="/logo.png" alt={siteConfig.name} width={1115} height={451} className="h-9 w-auto object-contain bg-cream px-2 py-1.5 mb-5" />
+					<p className="text-sm leading-relaxed">
 						Supportive, compassionate and highly qualified nursing care for all your family&apos;s medical and daily-living needs, delivered at home.
 					</p>
-					<div className="flex items-center gap-3 mt-5">
-						<a href={siteConfig.social.facebook} aria-label="Facebook" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent-500 transition-colors">
+					<div className="flex items-center gap-4 mt-6">
+						<a href={siteConfig.social.facebook} aria-label="Facebook" className="hover:text-accent transition-colors">
 							<FacebookIcon className="w-4 h-4" />
 						</a>
-						<a href={siteConfig.social.instagram} aria-label="Instagram" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent-500 transition-colors">
+						<a href={siteConfig.social.instagram} aria-label="Instagram" className="hover:text-accent transition-colors">
 							<InstagramIcon className="w-4 h-4" />
 						</a>
-						<a href={siteConfig.social.twitter} aria-label="Twitter" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent-500 transition-colors">
+						<a href={siteConfig.social.twitter} aria-label="Twitter" className="hover:text-accent transition-colors">
 							<XIcon className="w-4 h-4" />
 						</a>
-						<a href={siteConfig.social.linkedin} aria-label="LinkedIn" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent-500 transition-colors">
+						<a href={siteConfig.social.linkedin} aria-label="LinkedIn" className="hover:text-accent transition-colors">
 							<LinkedinIcon className="w-4 h-4" />
 						</a>
 					</div>
 				</div>
 
 				<div>
-					<h3 className="text-white font-semibold mb-4">Office Address</h3>
-					<p className="text-sm text-white/60 flex gap-2">
-						<MapPin className="w-4 h-4 shrink-0 mt-0.5 text-accent-500" />
+					<h3 className="font-display text-cream text-lg mb-5">Office Address</h3>
+					<p className="text-sm flex gap-2.5">
+						<MapPin className="w-4 h-4 shrink-0 mt-0.5 text-accent" />
 						<span>
 							{siteConfig.address.line1}
 							<br />
 							{siteConfig.address.line2}
 						</span>
 					</p>
-					<h3 className="text-white font-semibold mt-6 mb-3">Business Hours</h3>
-					<ul className="text-sm text-white/60 space-y-1.5">
+					<h3 className="font-display text-cream text-lg mt-8 mb-4">Business Hours</h3>
+					<ul className="text-sm space-y-2">
 						{siteConfig.hours.map((h) => (
 							<li key={h.day} className="flex justify-between gap-4">
-								<span>{h.day.slice(0, 3)}:</span>
+								<span>{h.day.slice(0, 3)}</span>
 								<span>{h.value}</span>
 							</li>
 						))}
@@ -55,11 +53,11 @@ export default function Footer() {
 				</div>
 
 				<div>
-					<h3 className="text-white font-semibold mb-4">Quick Links</h3>
-					<ul className="text-sm text-white/60 space-y-2.5">
+					<h3 className="font-display text-cream text-lg mb-5">Quick Links</h3>
+					<ul className="text-sm space-y-3">
 						{siteConfig.nav.map((item) => (
 							<li key={item.href}>
-								<Link href={item.href} className="hover:text-accent-500 transition-colors">
+								<Link href={item.href} className="hover:text-accent transition-colors">
 									{item.label}
 								</Link>
 							</li>
@@ -68,32 +66,32 @@ export default function Footer() {
 				</div>
 
 				<div>
-					<h3 className="text-white font-semibold mb-4">Contacts</h3>
-					<p className="text-sm text-accent-500 font-medium mb-3">24/7 Availability</p>
-					<ul className="text-sm text-white/60 space-y-2.5">
-						<li className="flex items-center gap-2">
-							<Mail className="w-4 h-4 text-accent-500" />
+					<h3 className="font-display text-cream text-lg mb-5">Contacts</h3>
+					<p className="text-xs uppercase tracking-widest text-accent font-semibold mb-4">24/7 Availability</p>
+					<ul className="text-sm space-y-3">
+						<li className="flex items-center gap-2.5">
+							<Mail className="w-4 h-4 text-accent" />
 							{siteConfig.email}
 						</li>
-						<li className="flex items-center gap-2">
-							<Phone className="w-4 h-4 text-accent-500" />
+						<li className="flex items-center gap-2.5">
+							<Phone className="w-4 h-4 text-accent" />
 							{siteConfig.phonePrimary}
 						</li>
-						<li className="flex items-center gap-2">
-							<Phone className="w-4 h-4 text-accent-500" />
+						<li className="flex items-center gap-2.5">
+							<Phone className="w-4 h-4 text-accent" />
 							{siteConfig.phoneSecondary}
 						</li>
 					</ul>
 					<a
 						href={`tel:${siteConfig.phonePrimary.replace(/\s/g, "")}`}
-						className="inline-block mt-5 rounded-full bg-accent-500 hover:bg-accent-600 text-white text-sm font-semibold px-5 py-2.5 transition-colors">
+						className="inline-block mt-6 border border-cream/30 hover:border-accent hover:text-accent text-cream text-xs font-semibold uppercase tracking-widest px-5 py-3 transition-colors">
 						Call Us Today
 					</a>
 				</div>
 			</div>
 
-			<div className="relative border-t border-white/10">
-				<div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/50">
+			<div className="border-t border-cream/10">
+				<div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-cream/40">
 					<p>{siteConfig.name.toUpperCase()} — (Home Nursing Services)</p>
 					<p>
 						Copyright © {siteConfig.shortName} {year}. All rights reserved.

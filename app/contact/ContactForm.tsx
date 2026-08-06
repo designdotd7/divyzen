@@ -3,6 +3,9 @@
 import { useState } from "react";
 import { CheckCircle2, Send } from "lucide-react";
 
+const fieldClass = "w-full border border-line bg-cream px-4 py-3 text-sm text-ink placeholder:text-ink-muted focus:outline-none focus:border-ink transition-colors";
+const labelClass = "block text-xs font-semibold uppercase tracking-widest text-ink-muted mb-2";
+
 export default function ContactForm() {
 	const [submitted, setSubmitted] = useState(false);
 
@@ -14,47 +17,28 @@ export default function ContactForm() {
 	}
 
 	return (
-		<form onSubmit={handleSubmit} className="grid sm:grid-cols-2 gap-5">
+		<form onSubmit={handleSubmit} className="grid sm:grid-cols-2 gap-6">
 			<div className="sm:col-span-1">
-				<label className="block text-sm font-medium text-gray-700 mb-1.5">Full Name</label>
-				<input
-					type="text"
-					required
-					placeholder="Full Name"
-					className="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/40 focus:border-brand-500"
-				/>
+				<label className={labelClass}>Full Name</label>
+				<input type="text" required placeholder="Full Name" className={fieldClass} />
 			</div>
 			<div className="sm:col-span-1">
-				<label className="block text-sm font-medium text-gray-700 mb-1.5">Email Address</label>
-				<input
-					type="email"
-					required
-					placeholder="Email Address"
-					className="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/40 focus:border-brand-500"
-				/>
+				<label className={labelClass}>Email Address</label>
+				<input type="email" required placeholder="Email Address" className={fieldClass} />
 			</div>
 			<div className="sm:col-span-2">
-				<label className="block text-sm font-medium text-gray-700 mb-1.5">Subject</label>
-				<input
-					type="text"
-					placeholder="How can we help?"
-					className="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/40 focus:border-brand-500"
-				/>
+				<label className={labelClass}>Subject</label>
+				<input type="text" placeholder="How can we help?" className={fieldClass} />
 			</div>
 			<div className="sm:col-span-2">
-				<label className="block text-sm font-medium text-gray-700 mb-1.5">Message</label>
-				<textarea
-					required
-					rows={5}
-					placeholder="Your Message"
-					className="w-full rounded-lg border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/40 focus:border-brand-500 resize-none"
-				/>
+				<label className={labelClass}>Message</label>
+				<textarea required rows={5} placeholder="Your Message" className={`${fieldClass} resize-none`} />
 			</div>
 			<div className="sm:col-span-2">
 				<button
 					type="submit"
 					disabled={submitted}
-					className="inline-flex items-center gap-2 rounded-full bg-accent-500 hover:bg-accent-600 disabled:opacity-70 text-white font-semibold px-6 py-3 transition-colors">
+					className="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark disabled:opacity-70 text-cream text-xs font-semibold uppercase tracking-widest px-7 py-4 transition-colors">
 					{submitted ? (
 						<>
 							<CheckCircle2 className="w-4 h-4" />
@@ -67,7 +51,7 @@ export default function ContactForm() {
 						</>
 					)}
 				</button>
-				{submitted && <p className="text-sm text-brand-600 mt-3">Thanks for reaching out — we&apos;ll get back to you shortly.</p>}
+				{submitted && <p className="text-sm text-ink-muted mt-3">Thanks for reaching out — we&apos;ll get back to you shortly.</p>}
 			</div>
 		</form>
 	);

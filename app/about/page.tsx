@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Award, HeartPulse, Home as HomeIcon, ShieldCheck, Users } from "lucide-react";
+import { ArrowRight, HeartPulse, Home as HomeIcon, ShieldCheck, Users } from "lucide-react";
 import { careStats, siteConfig } from "@/app/lib/siteConfig";
 import StatBar from "@/app/components/StatBar";
-import ArtPanel from "@/app/components/ArtPanel";
-import BlobBackground from "@/app/components/BlobBackground";
+import EditorialBlock from "@/app/components/EditorialBlock";
 
 export const metadata: Metadata = {
 	title: "About Us | Divyzen Care Solutions",
@@ -20,50 +19,52 @@ const values = [
 export default function AboutPage() {
 	return (
 		<div>
-			<section className="relative overflow-hidden bg-linear-to-br from-brand-50 via-white to-accent-100 py-16 md:py-20">
-				<BlobBackground />
-				<div className="relative max-w-4xl mx-auto px-6 text-center">
-					<span className="text-accent-600 text-sm font-semibold uppercase tracking-wide">About Divyzen</span>
-					<h1 className="mt-3 text-4xl md:text-5xl font-bold text-brand-900">We Take Care Of Your Problems Carefully</h1>
-					<p className="mt-4 text-gray-600 leading-relaxed">
-						We handle every concern with attention and diligence. Our team takes a thoughtful, careful approach to your family&apos;s needs, offering
-						solutions built around genuine well-being.
-					</p>
+			<section className="max-w-4xl mx-auto px-6 pt-16 md:pt-24 pb-16 text-center">
+				<div className="flex items-center justify-center gap-3 mb-6">
+					<span className="w-8 h-px bg-accent" />
+					<span className="text-xs font-semibold uppercase tracking-widest text-accent">About Divyzen</span>
+					<span className="w-8 h-px bg-accent" />
 				</div>
+				<h1 className="font-display text-5xl md:text-6xl tracking-tight text-ink">We take care of your problems carefully</h1>
+				<p className="mt-6 text-ink-muted leading-relaxed max-w-2xl mx-auto">
+					We handle every concern with attention and diligence. Our team takes a thoughtful, careful approach to your family&apos;s needs, offering
+					solutions built around genuine well-being.
+				</p>
 			</section>
 
-			<section className="max-w-7xl mx-auto px-6 py-16 md:py-20 grid md:grid-cols-2 gap-16 items-center">
-				{/* Image collage */}
-				<div className="relative h-[420px] md:h-[460px] order-2 md:order-1">
-					<ArtPanel icon={HomeIcon} tone="brand" label="Home Nursing Visits" className="absolute top-0 left-0 w-[68%] h-[62%] shadow-xl shadow-brand-900/15" />
-					<ArtPanel icon={Users} tone="accent" className="absolute bottom-0 right-0 w-[58%] h-[48%] shadow-xl shadow-accent-500/20 border-4 border-white" />
-					<div className="glass absolute bottom-6 left-4 rounded-2xl p-4 shadow-lg flex items-center gap-3 w-52">
-						<div className="w-10 h-10 rounded-full bg-linear-to-br from-brand-500 to-accent-500 flex items-center justify-center shrink-0">
-							<HeartPulse className="w-5 h-5 text-white" />
-						</div>
+			<section className="max-w-7xl mx-auto px-6 py-16 md:py-24 border-t border-line grid md:grid-cols-2 gap-16 items-center">
+				<div className="relative h-105 md:h-115 order-2 md:order-1">
+					<div className="absolute top-0 left-0 w-[64%] h-[58%]">
+						<EditorialBlock icon={HomeIcon} tone="ink" caption="Home Nursing Visits" className="w-full h-full mr-4 mb-4" />
+					</div>
+					<div className="absolute bottom-0 right-0 w-[54%] h-[44%]">
+						<EditorialBlock icon={Users} tone="accent" className="w-full h-full" />
+					</div>
+					<div className="absolute bottom-8 left-2 bg-cream border border-line px-5 py-4 flex items-center gap-3 w-52 shadow-sm">
+						<HeartPulse className="w-6 h-6 text-accent shrink-0" strokeWidth={1.5} />
 						<div>
-							<p className="text-sm font-bold text-brand-900">98% Satisfaction</p>
-							<p className="text-[11px] text-gray-500">Across families we&apos;ve supported</p>
+							<p className="font-display text-lg text-ink leading-none">98%</p>
+							<p className="text-[11px] text-ink-muted mt-1">Families satisfied with our care</p>
 						</div>
 					</div>
 				</div>
 
 				<div className="order-1 md:order-2">
-					<h2 className="text-3xl font-bold text-brand-900">Where We Focus Our Care</h2>
-					<p className="mt-4 text-gray-600 leading-relaxed">
+					<h2 className="font-display text-3xl text-ink mb-5">Where we focus our care</h2>
+					<p className="text-ink-muted leading-relaxed">
 						At Divyzen, your concerns are handled with precision and care. Our team is committed to understanding and resolving each case with close
 						attention to detail, so your family has real peace of mind.
 					</p>
-					<div className="mt-8 flex items-center gap-4 rounded-2xl bg-brand-50 border border-brand-100 p-5">
-						<div className="w-14 h-14 rounded-full bg-linear-to-br from-brand-600 to-accent-500 text-white flex items-center justify-center font-bold text-lg shrink-0">
+					<div className="mt-9 flex items-center gap-4 border-t border-line pt-7">
+						<div className="w-14 h-14 rounded-full bg-ink text-cream flex items-center justify-center font-display text-lg shrink-0">
 							{siteConfig.founder.name
 								.split(" ")
 								.map((n) => n[0])
 								.join("")}
 						</div>
 						<div>
-							<p className="font-semibold text-gray-900">{siteConfig.founder.name}</p>
-							<p className="text-sm text-gray-500">
+							<p className="font-semibold text-ink">{siteConfig.founder.name}</p>
+							<p className="text-sm text-ink-muted">
 								{siteConfig.founder.role}, {siteConfig.shortName}
 							</p>
 						</div>
@@ -71,14 +72,13 @@ export default function AboutPage() {
 				</div>
 			</section>
 
-			<section className="relative overflow-hidden bg-brand-50/60 py-16 md:py-20">
-				<BlobBackground />
-				<div className="relative max-w-7xl mx-auto px-6">
-					<div className="max-w-2xl mx-auto text-center mb-12">
-						<span className="text-accent-600 text-sm font-semibold uppercase tracking-wide">Where We Focus</span>
-						<h2 className="mt-3 text-3xl md:text-4xl font-bold text-brand-900">Our Care, By The Numbers</h2>
+			<section className="bg-cream-2 py-16 md:py-24 border-t border-line">
+				<div className="max-w-7xl mx-auto px-6">
+					<div className="flex items-center gap-3 mb-14">
+						<span className="w-8 h-px bg-accent" />
+						<span className="text-xs font-semibold uppercase tracking-widest text-accent">Where We Focus</span>
 					</div>
-					<div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-7 rounded-3xl glass p-8 md:p-10">
+					<div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-10">
 						{careStats.map((s) => (
 							<StatBar key={s.label} label={s.label} value={s.value} />
 						))}
@@ -86,35 +86,32 @@ export default function AboutPage() {
 				</div>
 			</section>
 
-			<section className="max-w-7xl mx-auto px-6 py-16 md:py-20">
-				<div className="max-w-2xl mx-auto text-center mb-12">
-					<span className="text-accent-600 text-sm font-semibold uppercase tracking-wide">What Drives Us</span>
-					<h2 className="mt-3 text-3xl md:text-4xl font-bold text-brand-900">Our Values</h2>
+			<section className="max-w-7xl mx-auto px-6 py-16 md:py-24 border-t border-line">
+				<div className="flex items-center gap-3 mb-14">
+					<span className="w-8 h-px bg-accent" />
+					<span className="text-xs font-semibold uppercase tracking-widest text-accent">What Drives Us</span>
 				</div>
-				<div className="grid md:grid-cols-3 gap-6">
-					{values.map((v) => (
-						<div key={v.title} className="rounded-2xl bg-white p-8 shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-							<div className="w-12 h-12 rounded-xl bg-linear-to-br from-brand-500 to-accent-500 flex items-center justify-center mb-5">
-								<v.icon className="w-6 h-6 text-white" />
-							</div>
-							<h3 className="font-semibold text-gray-900 mb-2">{v.title}</h3>
-							<p className="text-sm text-gray-600 leading-relaxed">{v.text}</p>
+				<div className="grid md:grid-cols-3 border-t border-l border-line">
+					{values.map((v, i) => (
+						<div key={v.title} className="border-r border-b border-line p-9">
+							<span className="font-display text-2xl text-accent">0{i + 1}</span>
+							<v.icon className="w-6 h-6 text-ink-muted mt-5 mb-5" strokeWidth={1.5} />
+							<h3 className="font-display text-xl text-ink mb-3">{v.title}</h3>
+							<p className="text-sm text-ink-muted leading-relaxed">{v.text}</p>
 						</div>
 					))}
 				</div>
 			</section>
 
-			<section className="relative overflow-hidden max-w-7xl mx-auto px-6 pb-16 md:pb-20">
-				<div className="relative overflow-hidden rounded-3xl bg-brand-900 text-white px-8 py-14 md:px-16 flex flex-col md:flex-row items-center justify-between gap-8">
-					<BlobBackground variant="dark" />
-					<div className="relative text-center md:text-left">
-						<Award className="w-8 h-8 text-accent-500 mb-4 mx-auto md:mx-0" />
-						<h2 className="text-2xl md:text-3xl font-bold">Quality Home Care & Private Nursing, Done Right</h2>
-						<p className="mt-3 text-white/70 max-w-xl">We prioritize not just healthcare, but a warm and caring environment for every patient we support.</p>
+			<section className="bg-ink text-cream py-16 md:py-20">
+				<div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+					<div>
+						<h2 className="font-display text-3xl md:text-4xl">Quality home care &amp; private nursing, done right</h2>
+						<p className="mt-4 text-cream/60 max-w-xl leading-relaxed">We prioritize not just healthcare, but a warm and caring environment for every patient we support.</p>
 					</div>
 					<Link
 						href="/appointment"
-						className="relative shrink-0 inline-flex items-center gap-2 rounded-full bg-accent-500 hover:bg-accent-600 text-white font-semibold px-6 py-3.5 shadow-lg shadow-accent-500/25 transition-colors">
+						className="shrink-0 inline-flex items-center gap-2 bg-accent hover:bg-cream hover:text-ink text-cream text-xs font-semibold uppercase tracking-widest px-7 py-4 transition-colors">
 						Make Appointment
 						<ArrowRight className="w-4 h-4" />
 					</Link>

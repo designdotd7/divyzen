@@ -1,35 +1,31 @@
 @import "tailwindcss";
 
 :root {
-	--background: #ffffff;
-	--foreground: #171717;
+	--background: #faf7f2;
+	--foreground: #211f1a;
 
-	--brand-50: #eefbfa;
-	--brand-100: #d3f2f0;
-	--brand-500: #147a8c;
-	--brand-600: #0f5c6b;
-	--brand-700: #0c4a56;
-	--brand-900: #082e37;
+	--cream: #faf7f2;
+	--cream-2: #f1ebe0;
+	--ink: #211f1a;
+	--ink-muted: #6f6a5f;
+	--line: #e3dccb;
 
-	--accent-100: #fce7f1;
-	--accent-500: #ec4899;
-	--accent-600: #db2777;
+	--accent: #a8451f;
+	--accent-dark: #832f13;
 }
 
 @theme inline {
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
 
-	--color-brand-50: var(--brand-50);
-	--color-brand-100: var(--brand-100);
-	--color-brand-500: var(--brand-500);
-	--color-brand-600: var(--brand-600);
-	--color-brand-700: var(--brand-700);
-	--color-brand-900: var(--brand-900);
+	--color-cream: var(--cream);
+	--color-cream-2: var(--cream-2);
+	--color-ink: var(--ink);
+	--color-ink-muted: var(--ink-muted);
+	--color-line: var(--line);
 
-	--color-accent-100: var(--accent-100);
-	--color-accent-500: var(--accent-500);
-	--color-accent-600: var(--accent-600);
+	--color-accent: var(--accent);
+	--color-accent-dark: var(--accent-dark);
 }
 
 body {
@@ -38,23 +34,7 @@ body {
 	font-family: var(--font-sans), ui-sans-serif, system-ui, Arial, Helvetica, sans-serif;
 }
 
-/* Frosted-glass surfaces, used over gradient/blob backgrounds */
-.glass {
-	background: rgb(255 255 255 / 0.6);
-	backdrop-filter: blur(20px);
-	-webkit-backdrop-filter: blur(20px);
-	border: 1px solid rgb(255 255 255 / 0.5);
-}
-
-.glass-dark {
-	background: rgb(8 46 55 / 0.55);
-	backdrop-filter: blur(20px);
-	-webkit-backdrop-filter: blur(20px);
-	border: 1px solid rgb(255 255 255 / 0.12);
-}
-
-/* Soft dot-grid texture for gradient art panels */
-.dot-grid {
-	background-image: radial-gradient(rgb(255 255 255 / 0.35) 1.5px, transparent 1.5px);
-	background-size: 18px 18px;
+/* Serif display face, used for headlines only */
+.font-display {
+	font-family: var(--font-serif), Georgia, "Times New Roman", serif;
 }

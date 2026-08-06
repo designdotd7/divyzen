@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { siteConfig } from "@/app/lib/siteConfig";
 import ContactForm from "./ContactForm";
-import ArtPanel from "@/app/components/ArtPanel";
-import BlobBackground from "@/app/components/BlobBackground";
+import EditorialBlock from "@/app/components/EditorialBlock";
 
 export const metadata: Metadata = {
 	title: "Contact Us | Divyzen Care Solutions",
@@ -20,25 +19,24 @@ const infoCards = [
 export default function ContactPage() {
 	return (
 		<div>
-			<section className="relative overflow-hidden bg-linear-to-br from-brand-50 via-white to-accent-100 py-16 md:py-20">
-				<BlobBackground />
-				<div className="relative max-w-4xl mx-auto px-6 text-center">
-					<span className="text-accent-600 text-sm font-semibold uppercase tracking-wide">Contact Us</span>
-					<h1 className="mt-3 text-4xl md:text-5xl font-bold text-brand-900">We&apos;d Love To Hear From You</h1>
-					<p className="mt-4 text-gray-600 leading-relaxed">Have a question about our services or ready to arrange care? Reach out and our team will respond promptly.</p>
+			<section className="max-w-4xl mx-auto px-6 pt-16 md:pt-24 pb-16 text-center">
+				<div className="flex items-center justify-center gap-3 mb-6">
+					<span className="w-8 h-px bg-accent" />
+					<span className="text-xs font-semibold uppercase tracking-widest text-accent">Contact Us</span>
+					<span className="w-8 h-px bg-accent" />
 				</div>
+				<h1 className="font-display text-5xl md:text-6xl tracking-tight text-ink">We&apos;d love to hear from you</h1>
+				<p className="mt-6 text-ink-muted leading-relaxed max-w-2xl mx-auto">Have a question about our services or ready to arrange care? Reach out and our team will respond promptly.</p>
 			</section>
 
-			<section className="max-w-7xl mx-auto px-6 py-16 md:py-20">
-				<div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-14">
+			<section className="max-w-7xl mx-auto px-6 pb-16 md:pb-24 border-t border-line">
+				<div className="grid sm:grid-cols-2 lg:grid-cols-4 border-l border-t border-line mt-14 mb-16">
 					{infoCards.map((c) => (
-						<div key={c.title} className="rounded-2xl border border-gray-100 bg-white p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-							<div className="w-11 h-11 rounded-xl bg-linear-to-br from-brand-500 to-accent-500 flex items-center justify-center mb-4">
-								<c.icon className="w-5 h-5 text-white" />
-							</div>
-							<h3 className="font-semibold text-gray-900 text-sm mb-2">{c.title}</h3>
+						<div key={c.title} className="border-r border-b border-line p-7">
+							<c.icon className="w-5 h-5 text-accent mb-5" strokeWidth={1.5} />
+							<h3 className="text-xs font-semibold uppercase tracking-widest text-ink mb-2">{c.title}</h3>
 							{c.lines.map((line) => (
-								<p key={line} className="text-sm text-gray-500 leading-relaxed">
+								<p key={line} className="text-sm text-ink-muted leading-relaxed">
 									{line}
 								</p>
 							))}
@@ -46,19 +44,19 @@ export default function ContactPage() {
 					))}
 				</div>
 
-				<div className="grid lg:grid-cols-2 gap-12 items-stretch">
-					<div className="rounded-2xl border border-gray-100 bg-white p-8">
-						<h2 className="text-xl font-semibold text-gray-900 mb-1">Send Us a Message</h2>
-						<p className="text-sm text-gray-500 mb-6">Fill out the form and we&apos;ll get back to you as soon as possible.</p>
+				<div className="grid lg:grid-cols-2 gap-16 items-stretch">
+					<div>
+						<h2 className="font-display text-2xl text-ink mb-1">Send us a message</h2>
+						<p className="text-sm text-ink-muted mb-8">Fill out the form and we&apos;ll get back to you as soon as possible.</p>
 						<ContactForm />
 					</div>
 
 					<div className="relative min-h-80">
-						<ArtPanel icon={MapPin} tone="brand" className="absolute inset-0 w-full h-full" />
-						<div className="glass absolute bottom-6 left-6 right-6 rounded-2xl p-5">
-							<p className="font-semibold text-brand-900">{siteConfig.address.line1}</p>
-							<p className="text-sm text-gray-600 mt-0.5">{siteConfig.address.line2}</p>
-							<p className="text-xs text-gray-500 mt-3">Map preview — embed your location once your address is confirmed.</p>
+						<EditorialBlock icon={MapPin} tone="ink" className="w-full h-full mr-4 mb-4" />
+						<div className="absolute bottom-8 left-2 right-8 bg-cream border border-line p-5">
+							<p className="font-display text-lg text-ink">{siteConfig.address.line1}</p>
+							<p className="text-sm text-ink-muted mt-0.5">{siteConfig.address.line2}</p>
+							<p className="text-xs text-ink-muted/70 mt-3">Map preview — embed your location once your address is confirmed.</p>
 						</div>
 					</div>
 				</div>
