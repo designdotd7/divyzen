@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 import { siteConfig } from "./lib/siteConfig";
 
 export const metadata: Metadata = {
-	title: `${siteConfig.name} | Home Nursing & Private Care Services`,
+	title: `${siteConfig.name} | Home Nursing & Private Care`,
 	description: siteConfig.description,
 };
 
