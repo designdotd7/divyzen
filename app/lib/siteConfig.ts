@@ -1,35 +1,21 @@
-// Placeholder business details — replace with your real address, phone numbers,
-// email, founder name and social links before launch.
 export const siteConfig = {
 	name: "Divyzen Care Solutions",
 	shortName: "Divyzen",
-	tagline: "Home Nursing & Private Care Services",
-	description: "Compassionate, professional home nursing and care services for your family — delivered where comfort matters most: home.",
+	tagline: "Hamari Seva, Aapke Apnepan Ke Saath",
+	description: "Trusted home healthcare & care services for you and your loved ones — delivered where comfort matters most: home.",
 
-	phonePrimary: "+91 90000 00000",
-	phoneSecondary: "+91 90000 00001",
-	emergencyPhone: "+91 90000 00001",
-	email: "info@divyzen.com",
+	phonePrimary: "+91 92141 45550",
+	emergencyPhone: "+91 92141 45550",
+	whatsappNumber: "919214145550",
+	email: "care@divyzen.com",
+	website: "www.divyzen.com",
 
 	address: {
-		line1: "Opposite City Hospital, Gate No. 3",
-		line2: "Your City, Your State - 000000",
+		line1: "B.S. Lodhi Plaza, Near Medanta Hospital, Gate No. 5",
+		line2: "Sushant Golf City, Lucknow, Uttar Pradesh 226002",
 	},
 
-	hours: [
-		{ day: "Monday", value: "Open 24 Hours" },
-		{ day: "Tuesday", value: "Open 24 Hours" },
-		{ day: "Wednesday", value: "Open 24 Hours" },
-		{ day: "Thursday", value: "Open 24 Hours" },
-		{ day: "Friday", value: "Open 24 Hours" },
-		{ day: "Saturday", value: "Open 24 Hours" },
-		{ day: "Sunday", value: "Open 24 Hours" },
-	],
-
-	founder: {
-		name: "Founder Name",
-		role: "Founder & Director",
-	},
+	hours: [{ day: "All Days", value: "Open 24 Hours" }],
 
 	social: {
 		facebook: "#",
@@ -40,80 +26,147 @@ export const siteConfig = {
 
 	nav: [
 		{ label: "Home", href: "/" },
-		{ label: "Services", href: "/services" },
 		{ label: "About Us", href: "/about" },
+		{ label: "Services", href: "/services" },
+		{ label: "Why Choose Us", href: "/#why-choose-us" },
 		{ label: "Contact Us", href: "/contact" },
-		{ label: "Appointment", href: "/appointment" },
 	],
+
+	mission: "To provide reliable, compassionate and personalized care to people in the comfort of their homes.",
+	vision: "To become a trusted name in home healthcare and care services by providing quality support with compassion, dignity and responsibility.",
+
+	disclaimer:
+		"Divyzen Care Solutions provides home healthcare and support services through appropriate healthcare professionals and caregivers. Services are provided based on individual requirements and applicable professional/medical guidance. In case of a medical emergency, please contact the appropriate emergency medical service immediately.",
 };
 
-export type ServiceIcon = "Home" | "Users" | "Activity";
+export type ServiceIcon = "ICU" | "Critical" | "Injection" | "PostOp" | "Elder" | "Dementia" | "Physio" | "Sample" | "Equipment" | "Caregiver";
 
 export const coreServices: {
 	slug: string;
 	title: string;
 	icon: ServiceIcon;
 	summary: string;
-	detail: string;
+	buttonLabel: string;
 }[] = [
 	{
-		slug: "home-care",
-		title: "Home Nursing Care",
-		icon: "Home",
-		summary: "Skilled nursing support delivered in the comfort and privacy of your own home.",
-		detail:
-			"From wound care and medication management to routine health monitoring, our trained nurses bring hospital-grade care into your living room, so recovery happens somewhere familiar.",
+		slug: "icu-care-at-home",
+		title: "ICU Care at Home",
+		icon: "ICU",
+		summary: "घर पर ICU-level care की आवश्यकता वाले patients के लिए professional healthcare support और आवश्यक monitoring की सुविधा।",
+		buttonLabel: "Book Service",
 	},
 	{
-		slug: "senior-care",
-		title: "Senior & Elder Care",
-		icon: "Users",
-		summary: "Dignified, patient-centred support built around the daily rhythms of ageing family members.",
-		detail:
-			"Mobility assistance, companionship, medication reminders and daily living support — designed to help seniors stay independent, safe and engaged at home.",
+		slug: "critical-care-at-home",
+		title: "Critical Care at Home",
+		icon: "Critical",
+		summary: "गंभीर स्वास्थ्य स्थिति वाले patients के लिए घर पर आवश्यक professional care और healthcare support।",
+		buttonLabel: "Book Service",
 	},
 	{
-		slug: "intensive-care",
-		title: "Critical & Intensive Care",
-		icon: "Activity",
-		summary: "Advanced, closely monitored care for patients with complex or post-surgical needs.",
-		detail:
-			"Our critical-care trained staff manage ventilator support, ICU-level monitoring equipment and post-operative recovery protocols, extending hospital-level vigilance into the home.",
+		slug: "dressing-injection",
+		title: "Dressing & Injection Services",
+		icon: "Injection",
+		summary: "Qualified healthcare professionals के माध्यम से घर पर dressing, wound care और prescribed injection services।",
+		buttonLabel: "Book Service",
+	},
+	{
+		slug: "post-operative-care",
+		title: "Post-Operative Care",
+		icon: "PostOp",
+		summary: "Surgery के बाद patient की recovery के दौरान daily care, assistance और आवश्यक support।",
+		buttonLabel: "Book Service",
+	},
+	{
+		slug: "elder-care-at-home",
+		title: "Elder Care at Home",
+		icon: "Elder",
+		summary: "बुजुर्गों के लिए daily activities, personal assistance, companionship और आवश्यक care support।",
+		buttonLabel: "Book Service",
+	},
+	{
+		slug: "dementia-alzheimers-care",
+		title: "Dementia & Alzheimer's Care",
+		icon: "Dementia",
+		summary: "Dementia और Alzheimer's से प्रभावित elderly individuals के लिए patient, compassionate और personalized care support।",
+		buttonLabel: "Book Service",
+	},
+	{
+		slug: "physiotherapy-at-home",
+		title: "Physiotherapy at Home",
+		icon: "Physio",
+		summary: "Patient की आवश्यकता के अनुसार घर पर physiotherapy और rehabilitation support।",
+		buttonLabel: "Book Service",
+	},
+	{
+		slug: "blood-urine-sample-collection",
+		title: "Blood & Urine Sample Collection",
+		icon: "Sample",
+		summary: "Patients की सुविधा के लिए घर से blood और urine sample collection की सुविधा।",
+		buttonLabel: "Book Sample Collection",
+	},
+	{
+		slug: "medical-equipment-on-rent",
+		title: "Medical Equipment on Rent",
+		icon: "Equipment",
+		summary: "जरूरत के अनुसार विभिन्न medical equipment को rental basis पर उपलब्ध कराने की सुविधा।",
+		buttonLabel: "View Equipment",
+	},
+	{
+		slug: "caregiver-attendant-services",
+		title: "Caregiver / Attendant Services",
+		icon: "Caregiver",
+		summary: "Patients और elderly individuals के लिए daily assistance, personal care और companionship support।",
+		buttonLabel: "Enquire Now",
 	},
 ];
 
-export const additionalOfferings = [
-	"Nursing Care",
-	"Patient Attendant Care",
-	"Elder Care",
-	"Baby & Postnatal Care",
-	"Physiotherapy at Home",
-	"Home Sample Collection & Blood Tests",
-];
-
-export const careStats = [
-	{ label: "Home Nursing", value: 95 },
-	{ label: "Patient Care", value: 92 },
-	{ label: "Senior Care", value: 90 },
-	{ label: "Baby & Postnatal Care", value: 88 },
-	{ label: "Physiotherapy", value: 93 },
-	{ label: "Diagnostic Sample Collection", value: 85 },
-];
-
-export const homeFeatures = [
+export const whyChooseUs = [
 	{
-		title: "Our Care Promise",
-		icon: "ShieldCheck" as const,
-		text: "Every plan is built around your family's comfort and peace of mind, backed by regular check-ins and a team that's genuinely accountable for outcomes.",
+		icon: "Heart" as const,
+		title: "Compassionate Care",
+		text: "हर patient की जरूरत, comfort और dignity को ध्यान में रखकर care support।",
 	},
 	{
-		title: "Qualified Nursing Staff",
+		icon: "Home" as const,
+		title: "Care at Home",
+		text: "अपने घर के आरामदायक और familiar environment में care की सुविधा।",
+	},
+	{
 		icon: "Stethoscope" as const,
-		text: "Every caregiver we place is verified, trained and experienced, so your loved ones are looked after by people who know exactly what they're doing.",
+		title: "Professional Support",
+		text: "Healthcare requirements के अनुसार trained/qualified professionals और caregivers के माध्यम से services।",
 	},
 	{
-		title: "Transparent, Fair Pricing",
-		icon: "Wallet" as const,
-		text: "Clear, upfront pricing with no hidden charges — quality home care shouldn't mean choosing between good care and an honest bill.",
+		icon: "HeartHandshake" as const,
+		title: "Personalized Attention",
+		text: "हर patient की जरूरत एक जैसी नहीं होती। इसलिए care को individual requirements के अनुसार व्यवस्थित किया जाता है।",
+	},
+	{
+		icon: "PhoneCall" as const,
+		title: "Easy & Reliable Support",
+		text: "Service enquiry और assistance के लिए आसान communication और support।",
+	},
+];
+
+export const howItWorks = [
+	{
+		step: "01",
+		title: "Contact Us",
+		text: "Call या WhatsApp के माध्यम से अपनी requirement बताएं।",
+	},
+	{
+		step: "02",
+		title: "Share Your Requirement",
+		text: "Patient की condition और required service के बारे में basic information दें।",
+	},
+	{
+		step: "03",
+		title: "Care Planning",
+		text: "आपकी requirement के अनुसार suitable service और care support की व्यवस्था की जाती है।",
+	},
+	{
+		step: "04",
+		title: "Care at Your Home",
+		text: "हमारी service निर्धारित आवश्यकता के अनुसार आपके घर पर उपलब्ध कराई जाती है।",
 	},
 ];

@@ -1,15 +1,15 @@
 import Link from "next/link";
-import { Activity, ArrowRight, CheckCircle2, HeartHandshake, Home as HomeIcon, PhoneCall, ShieldCheck, Sparkles, Stethoscope, Users, Wallet } from "lucide-react";
-import { additionalOfferings, careStats, coreServices, homeFeatures, siteConfig } from "@/app/lib/siteConfig";
-import StatBar from "@/app/components/StatBar";
+import { ArrowRight, CheckCircle2, HeartHandshake, MessageCircle, PhoneCall, ShieldCheck, Sparkles } from "lucide-react";
+import { coreServices, howItWorks, siteConfig, whyChooseUs } from "@/app/lib/siteConfig";
+import { serviceIconMap, whyChooseIconMap } from "@/app/lib/icons";
 import ArtPanel from "@/app/components/ArtPanel";
 import BlobBackground from "@/app/components/BlobBackground";
 import Reveal from "@/app/components/Reveal";
 
-const serviceIcons = { Home: HomeIcon, Users, Activity };
-const featureIcons = { ShieldCheck, Stethoscope, Wallet };
-
 export default function Home() {
+	const telHref = `tel:${siteConfig.phonePrimary.replace(/\s/g, "")}`;
+	const waHref = `https://wa.me/${siteConfig.whatsappNumber}`;
+
 	return (
 		<div>
 			{/* Hero */}
@@ -19,25 +19,25 @@ export default function Home() {
 					<Reveal direction="left">
 						<span className="inline-flex items-center gap-2 rounded-full glass text-brand-700 text-xs font-semibold px-4 py-1.5 shadow-sm">
 							<Sparkles className="w-3.5 h-3.5 text-accent-500 animate-pulse" />
-							Trusted Home Nursing Care
+							Trusted Home Healthcare &amp; Care Services
 						</span>
-						<h1 className="mt-5 text-4xl md:text-5xl font-bold text-brand-900 leading-tight">We Care For Your Family, Right At Home</h1>
-						<p className="mt-5 text-gray-600 leading-relaxed max-w-lg">
-							Divyzen brings compassionate, personalized home care to your doorstep. Our dedicated nurses and caregivers focus on the comfort, dignity and
-							well-being of your loved ones, so they can heal and thrive in familiar surroundings.
-						</p>
+						<h1 className="mt-5 text-4xl md:text-5xl font-bold text-brand-900 leading-tight">Care That Feels Like Home</h1>
+						<p className="mt-5 text-gray-600 leading-relaxed max-w-lg">Trusted Home Healthcare &amp; Care Services for You and Your Loved Ones</p>
+						<p className="mt-2 text-brand-700 font-medium">आपके अपनों की देखभाल, भरोसे और अपनेपन के साथ।</p>
 						<div className="mt-8 flex flex-wrap items-center gap-4">
-							<Link
-								href="/appointment"
-								className="group inline-flex items-center gap-2 rounded-full bg-accent-500 hover:bg-accent-600 text-white font-semibold px-6 py-3.5 shadow-lg shadow-accent-500/25 transition-all duration-200 hover:scale-105 hover:shadow-xl active:scale-95">
-								Make Appointment
-								<ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
-							</Link>
 							<a
-								href={`tel:${siteConfig.phonePrimary.replace(/\s/g, "")}`}
-								className="inline-flex items-center gap-2 rounded-full glass text-brand-700 font-semibold px-6 py-3.5 transition-all duration-200 hover:bg-white/80 hover:scale-105 active:scale-95">
+								href={telHref}
+								className="group inline-flex items-center gap-2 rounded-full bg-accent-500 hover:bg-accent-600 text-white font-semibold px-6 py-3.5 shadow-lg shadow-accent-500/25 transition-all duration-200 hover:scale-105 hover:shadow-xl active:scale-95">
 								<PhoneCall className="w-4 h-4" />
-								Call Us Today
+								Call Now
+							</a>
+							<a
+								href={waHref}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="inline-flex items-center gap-2 rounded-full glass text-brand-700 font-semibold px-6 py-3.5 transition-all duration-200 hover:bg-white/80 hover:scale-105 active:scale-95">
+								<MessageCircle className="w-4 h-4" />
+								WhatsApp Us
 							</a>
 						</div>
 
@@ -48,8 +48,8 @@ export default function Home() {
 							</div>
 							<div className="w-px h-10 bg-gray-200" />
 							<div>
-								<p className="text-2xl font-bold text-brand-900">6+</p>
-								<p className="text-xs text-gray-500">In-home services</p>
+								<p className="text-2xl font-bold text-brand-900">10</p>
+								<p className="text-xs text-gray-500">Care services</p>
 							</div>
 							<div className="w-px h-10 bg-gray-200" />
 							<div>
@@ -70,10 +70,10 @@ export default function Home() {
 								<p className="text-sm font-semibold text-brand-900">Verified Care Team</p>
 							</div>
 							<ul className="space-y-2">
-								{additionalOfferings.slice(0, 4).map((item) => (
-									<li key={item} className="flex items-center gap-2 text-xs text-gray-700">
+								{coreServices.slice(0, 4).map((s) => (
+									<li key={s.slug} className="flex items-center gap-2 text-xs text-gray-700">
 										<CheckCircle2 className="w-3.5 h-3.5 text-accent-500 shrink-0" />
-										{item}
+										{s.title}
 									</li>
 								))}
 							</ul>
@@ -87,14 +87,85 @@ export default function Home() {
 				</div>
 			</section>
 
-			{/* Features */}
-			<section className="relative overflow-hidden max-w-7xl mx-auto px-6 py-16 md:py-20">
-				<div className="grid md:grid-cols-3 gap-6">
-					{homeFeatures.map((f, i) => {
-						const Icon = featureIcons[f.icon];
+			{/* Introduction */}
+			<section className="max-w-5xl mx-auto px-6 py-16 md:py-20 text-center">
+				<Reveal>
+					<span className="text-accent-600 text-sm font-semibold uppercase tracking-wide">Introduction</span>
+					<h2 className="mt-3 text-3xl md:text-4xl font-bold text-brand-900">Compassionate Care, Right at Your Home</h2>
+					<div className="mt-6 space-y-4 text-gray-600 leading-relaxed text-left md:text-center">
+						<p>
+							Divyzen Care Solutions का उद्देश्य जरूरतमंद लोगों और उनके परिवारों तक भरोसेमंद, compassionate और personalized home healthcare &amp;
+							support services पहुँचाना है।
+						</p>
+						<p>
+							हम मानते हैं कि अपने घर के परिचित और आरामदायक वातावरण में मिलने वाली देखभाल व्यक्ति और उसके परिवार दोनों के लिए अधिक सहज होती है।
+						</p>
+						<p>
+							हमारी सेवाएँ patient की जरूरत और परिवार की requirements के अनुसार व्यवस्थित की जाती हैं, ताकि उन्हें उचित support, comfort और peace
+							of mind मिल सके।
+						</p>
+					</div>
+					<Link
+						href="/services"
+						className="group inline-flex items-center gap-2 mt-8 rounded-full bg-brand-700 hover:bg-brand-600 text-white font-semibold px-6 py-3.5 shadow-lg shadow-brand-900/20 transition-all duration-200 hover:scale-105 active:scale-95">
+						Explore Our Services
+						<ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+					</Link>
+				</Reveal>
+			</section>
+
+			{/* Our Services */}
+			<section className="relative overflow-hidden bg-brand-50/60 py-16 md:py-20">
+				<BlobBackground />
+				<div className="relative max-w-7xl mx-auto px-6">
+					<Reveal className="max-w-2xl mx-auto text-center mb-12">
+						<span className="text-accent-600 text-sm font-semibold uppercase tracking-wide">Our Services</span>
+						<h2 className="mt-3 text-3xl md:text-4xl font-bold text-brand-900">Our Home Healthcare Services</h2>
+						<p className="mt-4 text-gray-600">Professional Care &amp; Support, Right at Your Doorstep</p>
+					</Reveal>
+
+					<div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+						{coreServices.map((s, i) => {
+							const Icon = serviceIconMap[s.icon];
+							return (
+								<Reveal key={s.slug} delay={(i % 3) * 100}>
+									<div className="h-full flex flex-col rounded-2xl bg-white shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
+										<ArtPanel
+											icon={Icon}
+											tone="accent"
+											seed={`divyzen-${s.slug}`}
+											className="h-40 w-full rounded-none group-hover:scale-[1.03] transition-transform duration-500"
+										/>
+										<div className="p-7 flex flex-col flex-1">
+											<h3 className="font-semibold text-gray-900 mb-2">{s.title}</h3>
+											<p className="text-sm text-gray-600 leading-relaxed flex-1">{s.summary}</p>
+											<Link
+												href="/appointment"
+												className="group/btn inline-flex items-center gap-1.5 mt-5 text-sm font-semibold text-brand-600 hover:text-brand-700">
+												{s.buttonLabel}
+												<ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover/btn:translate-x-1" />
+											</Link>
+										</div>
+									</div>
+								</Reveal>
+							);
+						})}
+					</div>
+				</div>
+			</section>
+
+			{/* Why Choose Us */}
+			<section id="why-choose-us" className="max-w-7xl mx-auto px-6 py-16 md:py-20 scroll-mt-24">
+				<Reveal className="max-w-2xl mx-auto text-center mb-12">
+					<span className="text-accent-600 text-sm font-semibold uppercase tracking-wide">Why Choose Divyzen?</span>
+					<h2 className="mt-3 text-3xl md:text-4xl font-bold text-brand-900">Because Care Is More Than Just a Service.</h2>
+				</Reveal>
+				<div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
+					{whyChooseUs.map((f, i) => {
+						const Icon = whyChooseIconMap[f.icon];
 						return (
 							<Reveal key={f.title} delay={i * 100}>
-								<div className="group rounded-2xl border border-gray-100 bg-white p-8 hover:shadow-xl hover:shadow-brand-900/5 hover:-translate-y-1 transition-all duration-300">
+								<div className="group h-full rounded-2xl border border-gray-100 bg-white p-7 hover:shadow-xl hover:shadow-brand-900/5 hover:-translate-y-1 transition-all duration-300">
 									<div className="w-12 h-12 rounded-xl bg-linear-to-br from-brand-500 to-brand-700 flex items-center justify-center mb-5 shadow-md shadow-brand-900/15 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
 										<Icon className="w-6 h-6 text-white" />
 									</div>
@@ -107,89 +178,50 @@ export default function Home() {
 				</div>
 			</section>
 
-			{/* Services preview */}
+			{/* How It Works */}
 			<section className="relative overflow-hidden bg-brand-50/60 py-16 md:py-20">
 				<BlobBackground />
-				<div className="relative max-w-7xl mx-auto px-6">
+				<div className="relative max-w-6xl mx-auto px-6">
 					<Reveal className="max-w-2xl mx-auto text-center mb-12">
-						<span className="text-accent-600 text-sm font-semibold uppercase tracking-wide">Our Services</span>
-						<h2 className="mt-3 text-3xl md:text-4xl font-bold text-brand-900">What Care We Provide</h2>
-						<p className="mt-4 text-gray-600">
-							Explore Divyzen&apos;s home care services, covering a range of needs and tailored to keep your family&apos;s well-being front and centre.
-						</p>
+						<span className="text-accent-600 text-sm font-semibold uppercase tracking-wide">How It Works</span>
+						<h2 className="mt-3 text-3xl md:text-4xl font-bold text-brand-900">How Our Service Works</h2>
 					</Reveal>
-
-					<div className="grid md:grid-cols-3 gap-6">
-						{coreServices.map((s, i) => {
-							const Icon = serviceIcons[s.icon];
-							return (
-								<Reveal key={s.slug} delay={i * 100}>
-									<div className="rounded-2xl bg-white shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
-										<ArtPanel
-											icon={Icon}
-											tone="accent"
-											seed={`divyzen-${s.slug}`}
-											className="h-40 w-full rounded-none group-hover:scale-[1.03] transition-transform duration-500"
-										/>
-										<div className="p-7">
-											<h3 className="font-semibold text-gray-900 mb-2">{s.title}</h3>
-											<p className="text-sm text-gray-600 leading-relaxed">{s.summary}</p>
-										</div>
-									</div>
-								</Reveal>
-							);
-						})}
-					</div>
-
-					<div className="text-center mt-10">
-						<Link
-							href="/appointment"
-							className="group inline-flex items-center gap-2 rounded-full bg-brand-700 hover:bg-brand-600 text-white font-semibold px-6 py-3.5 shadow-lg shadow-brand-900/20 transition-all duration-200 hover:scale-105 active:scale-95">
-							Make Appointment
-							<ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
-						</Link>
+					<div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+						{howItWorks.map((step, i) => (
+							<Reveal key={step.step} delay={i * 100}>
+								<div className="h-full rounded-2xl glass p-7 shadow-sm">
+									<span className="text-3xl font-bold text-accent-500/70">{step.step}</span>
+									<h3 className="mt-3 font-semibold text-gray-900">{step.title}</h3>
+									<p className="mt-2 text-sm text-gray-600 leading-relaxed">{step.text}</p>
+								</div>
+							</Reveal>
+						))}
 					</div>
 				</div>
 			</section>
 
-			{/* About preview with stats */}
-			<section className="max-w-7xl mx-auto px-6 py-16 md:py-20 grid md:grid-cols-2 gap-14 items-center">
-				<Reveal direction="left">
-					<span className="text-accent-600 text-sm font-semibold uppercase tracking-wide">About Divyzen</span>
-					<h2 className="mt-3 text-3xl md:text-4xl font-bold text-brand-900">We Handle Your Family&apos;s Care With Genuine Attention</h2>
-					<p className="mt-4 text-gray-600 leading-relaxed">
-						We approach every case with patience and precision. Our team is committed to understanding your family&apos;s specific needs and responding with a
-						plan that brings real peace of mind.
-					</p>
-					<Link href="/about" className="group inline-flex items-center gap-2 mt-6 text-brand-600 font-semibold hover:text-brand-700">
-						Learn more about us
-						<ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
-					</Link>
-				</Reveal>
-				<Reveal direction="right" delay={150} className="relative rounded-3xl border border-gray-100 bg-white p-8 shadow-sm">
-					<div className="grid sm:grid-cols-2 gap-x-8 gap-y-6">
-						{careStats.map((s) => (
-							<StatBar key={s.label} label={s.label} value={s.value} />
-						))}
-					</div>
-				</Reveal>
-			</section>
-
-			{/* CTA / Emergency band */}
+			{/* CTA */}
 			<section className="relative overflow-hidden bg-brand-900 text-white">
 				<BlobBackground variant="dark" />
-				<Reveal className="relative max-w-7xl mx-auto px-6 py-14 grid md:grid-cols-[1fr_auto] gap-8 items-center">
-					<div>
-						<h2 className="text-2xl md:text-3xl font-bold">Supportive, Compassionate &amp; Qualified Nursing Care</h2>
-						<p className="mt-3 text-white/70 max-w-2xl">
-							We offer in-home healthcare services including nursing care, patient attendants, elder care, baby care, physiotherapy and diagnostic sample
-							collection — with more services added as we grow.
-						</p>
-					</div>
-					<div className="glass-dark rounded-2xl px-6 py-4 flex flex-col items-start md:items-end gap-1">
-						<span className="text-xs text-white/60 uppercase tracking-wide">Emergency Call</span>
-						<a href={`tel:${siteConfig.emergencyPhone.replace(/\s/g, "")}`} className="text-2xl font-bold text-accent-500 hover:text-accent-400 transition-colors">
-							{siteConfig.emergencyPhone}
+				<Reveal className="relative max-w-4xl mx-auto px-6 py-16 text-center">
+					<h2 className="text-2xl md:text-3xl font-bold">Need Care at Home? We&apos;re Here to Help.</h2>
+					<p className="mt-3 text-white/70 max-w-2xl mx-auto">
+						अपने या अपने परिवार के लिए home healthcare या care service की जरूरत है? हमसे संपर्क करें और अपनी requirement के बारे में बात करें।
+					</p>
+					<div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+						<a
+							href={telHref}
+							className="inline-flex items-center gap-2 rounded-full bg-accent-500 hover:bg-accent-600 text-white font-semibold px-6 py-3.5 shadow-lg shadow-accent-500/25 transition-all duration-200 hover:scale-105 active:scale-95">
+							<PhoneCall className="w-4 h-4" />
+							Call Now
+						</a>
+						<a
+							href={waHref}
+							target="_blank"
+							rel="noopener noreferrer"
+							className="inline-flex items-center gap-2 rounded-full glass-dark text-white font-semibold px-6 py-3.5 transition-all duration-200 hover:scale-105 active:scale-95">
+							<MessageCircle className="w-4 h-4" />
+							WhatsApp Us
 						</a>
 					</div>
 				</Reveal>

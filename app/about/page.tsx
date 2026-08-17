@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Award, HeartPulse, Home as HomeIcon, ShieldCheck, Users } from "lucide-react";
-import { careStats, siteConfig } from "@/app/lib/siteConfig";
-import StatBar from "@/app/components/StatBar";
+import { ArrowRight, Award, Compass, HeartPulse, ShieldCheck, Target, Users } from "lucide-react";
+import { siteConfig } from "@/app/lib/siteConfig";
 import ArtPanel from "@/app/components/ArtPanel";
 import BlobBackground from "@/app/components/BlobBackground";
 import Reveal from "@/app/components/Reveal";
 
 export const metadata: Metadata = {
 	title: "About Us | Divyzen Care Solutions",
-	description: "Learn about Divyzen Care Solutions and our approach to home nursing and family care.",
+	description: "Learn about Divyzen Care Solutions and our approach to home healthcare and care services.",
 };
 
 const values = [
@@ -25,64 +24,47 @@ export default function AboutPage() {
 				<BlobBackground />
 				<Reveal className="relative max-w-4xl mx-auto px-6 text-center">
 					<span className="text-accent-600 text-sm font-semibold uppercase tracking-wide">About Divyzen</span>
-					<h1 className="mt-3 text-4xl md:text-5xl font-bold text-brand-900">We Take Care Of Your Problems Carefully</h1>
-					<p className="mt-4 text-gray-600 leading-relaxed">
-						We handle every concern with attention and diligence. Our team takes a thoughtful, careful approach to your family&apos;s needs, offering
-						solutions built around genuine well-being.
-					</p>
+					<h1 className="mt-3 text-4xl md:text-5xl font-bold text-brand-900">About Divyzen Care Solutions</h1>
+					<p className="mt-4 text-gray-600 leading-relaxed">&ldquo;{siteConfig.tagline}&rdquo;</p>
 				</Reveal>
 			</section>
 
 			<section className="max-w-7xl mx-auto px-6 py-16 md:py-20 grid md:grid-cols-2 gap-16 items-center">
-				{/* Image collage */}
-				<Reveal direction="left" className="relative h-[420px] md:h-[460px] order-2 md:order-1">
-					<ArtPanel icon={HomeIcon} tone="brand" seed="divyzen-about-nurse" label="Home Nursing Visits" className="absolute top-0 left-0 w-[68%] h-[62%] shadow-xl shadow-brand-900/15" />
+				<Reveal direction="left" className="relative h-105 md:h-115 order-2 md:order-1">
+					<ArtPanel icon={HeartPulse} tone="brand" seed="divyzen-about-nurse" label="Home Care Visits" className="absolute top-0 left-0 w-[68%] h-[62%] shadow-xl shadow-brand-900/15" />
 					<ArtPanel icon={Users} tone="accent" seed="divyzen-about-family" className="absolute bottom-0 right-0 w-[58%] h-[48%] shadow-xl shadow-accent-500/20 border-4 border-white" />
-					<div className="glass absolute bottom-6 left-4 rounded-2xl p-4 shadow-lg flex items-center gap-3 w-52 transition-transform duration-300 hover:-translate-y-1">
-						<div className="w-10 h-10 rounded-full bg-linear-to-br from-brand-500 to-accent-500 flex items-center justify-center shrink-0">
-							<HeartPulse className="w-5 h-5 text-white" />
-						</div>
-						<div>
-							<p className="text-sm font-bold text-brand-900">98% Satisfaction</p>
-							<p className="text-[11px] text-gray-500">Across families we&apos;ve supported</p>
-						</div>
-					</div>
 				</Reveal>
 
-				<Reveal direction="right" delay={150} className="order-1 md:order-2">
-					<h2 className="text-3xl font-bold text-brand-900">Where We Focus Our Care</h2>
-					<p className="mt-4 text-gray-600 leading-relaxed">
-						At Divyzen, your concerns are handled with precision and care. Our team is committed to understanding and resolving each case with close
-						attention to detail, so your family has real peace of mind.
+				<Reveal direction="right" delay={150} className="order-1 md:order-2 space-y-4 text-gray-600 leading-relaxed">
+					<h2 className="text-3xl font-bold text-brand-900 mb-2">Who We Are</h2>
+					<p>
+						Divyzen Care Solutions एक home healthcare and care service company है, जिसका उद्देश्य लोगों को उनके घर पर भरोसेमंद और compassionate
+						care support उपलब्ध कराना है।
 					</p>
-					<div className="mt-8 flex items-center gap-4 rounded-2xl bg-brand-50 border border-brand-100 p-5">
-						<div className="w-14 h-14 rounded-full bg-linear-to-br from-brand-600 to-accent-500 text-white flex items-center justify-center font-bold text-lg shrink-0">
-							{siteConfig.founder.name
-								.split(" ")
-								.map((n) => n[0])
-								.join("")}
-						</div>
-						<div>
-							<p className="font-semibold text-gray-900">{siteConfig.founder.name}</p>
-							<p className="text-sm text-gray-500">
-								{siteConfig.founder.role}, {siteConfig.shortName}
-							</p>
-						</div>
-					</div>
+					<p>
+						हमारा focus केवल service provide करना नहीं, बल्कि patient और उनके परिवार को care के दौरान comfort, support और peace of mind देना है।
+					</p>
+					<p>
+						हम elderly care, critical care support, ICU care at home, post-operative care, dressing &amp; injection services, dementia &amp;
+						Alzheimer&apos;s care, physiotherapy, home sample collection, caregiver services और medical equipment rental जैसी सुविधाएँ उपलब्ध
+						कराने के लिए प्रतिबद्ध हैं।
+					</p>
+					<p>हम हर परिवार की जरूरत को समझने और उनके लिए उचित care solution उपलब्ध कराने पर ध्यान देते हैं।</p>
 				</Reveal>
 			</section>
 
 			<section className="relative overflow-hidden bg-brand-50/60 py-16 md:py-20">
 				<BlobBackground />
-				<div className="relative max-w-7xl mx-auto px-6">
-					<Reveal className="max-w-2xl mx-auto text-center mb-12">
-						<span className="text-accent-600 text-sm font-semibold uppercase tracking-wide">Where We Focus</span>
-						<h2 className="mt-3 text-3xl md:text-4xl font-bold text-brand-900">Our Care, By The Numbers</h2>
+				<div className="relative max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-6">
+					<Reveal className="rounded-2xl bg-white p-8 shadow-sm border border-gray-100">
+						<Target className="w-8 h-8 text-brand-600 mb-4" />
+						<h3 className="text-lg font-semibold text-gray-900 mb-2">Our Mission</h3>
+						<p className="text-sm text-gray-600 leading-relaxed">{siteConfig.mission}</p>
 					</Reveal>
-					<Reveal delay={100} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-7 rounded-3xl glass p-8 md:p-10">
-						{careStats.map((s) => (
-							<StatBar key={s.label} label={s.label} value={s.value} />
-						))}
+					<Reveal delay={100} className="rounded-2xl bg-white p-8 shadow-sm border border-gray-100">
+						<Compass className="w-8 h-8 text-accent-600 mb-4" />
+						<h3 className="text-lg font-semibold text-gray-900 mb-2">Our Vision</h3>
+						<p className="text-sm text-gray-600 leading-relaxed">{siteConfig.vision}</p>
 					</Reveal>
 				</div>
 			</section>
@@ -112,13 +94,13 @@ export default function AboutPage() {
 					<BlobBackground variant="dark" />
 					<div className="relative text-center md:text-left">
 						<Award className="w-8 h-8 text-accent-500 mb-4 mx-auto md:mx-0" />
-						<h2 className="text-2xl md:text-3xl font-bold">Quality Home Care & Private Nursing, Done Right</h2>
-						<p className="mt-3 text-white/70 max-w-xl">We prioritize not just healthcare, but a warm and caring environment for every patient we support.</p>
+						<h2 className="text-2xl md:text-3xl font-bold">Quality Home Care, Done Right</h2>
+						<p className="mt-3 text-white/70 max-w-xl">&ldquo;{siteConfig.tagline}&rdquo;</p>
 					</div>
 					<Link
 						href="/appointment"
 						className="group relative shrink-0 inline-flex items-center gap-2 rounded-full bg-accent-500 hover:bg-accent-600 text-white font-semibold px-6 py-3.5 shadow-lg shadow-accent-500/25 transition-all duration-200 hover:scale-105 active:scale-95">
-						Make Appointment
+						Book a Service
 						<ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
 					</Link>
 				</Reveal>

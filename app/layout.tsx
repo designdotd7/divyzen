@@ -7,7 +7,7 @@ import LocationMap from "./components/LocationMap";
 import { siteConfig } from "./lib/siteConfig";
 
 export const metadata: Metadata = {
-	title: `${siteConfig.name} | Home Nursing & Private Care`,
+	title: `${siteConfig.name} | ${siteConfig.tagline}`,
 	description: siteConfig.description,
 };
 
