@@ -7,6 +7,7 @@ import BlobBackground from "@/app/components/BlobBackground";
 
 export default function Footer() {
 	const year = new Date().getFullYear();
+	const hoursUniform = siteConfig.hours.every((h) => h.value === siteConfig.hours[0].value);
 
 	return (
 		<footer className="relative overflow-hidden bg-brand-900 text-white/80">
@@ -18,16 +19,16 @@ export default function Footer() {
 						Supportive, compassionate and highly qualified nursing care for all your family&apos;s medical and daily-living needs, delivered at home.
 					</p>
 					<div className="flex items-center gap-3 mt-5">
-						<a href={siteConfig.social.facebook} aria-label="Facebook" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent-500 transition-colors">
+						<a href={siteConfig.social.facebook} aria-label="Facebook" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent-500 transition-all duration-200 hover:-translate-y-0.5">
 							<FacebookIcon className="w-4 h-4" />
 						</a>
-						<a href={siteConfig.social.instagram} aria-label="Instagram" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent-500 transition-colors">
+						<a href={siteConfig.social.instagram} aria-label="Instagram" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent-500 transition-all duration-200 hover:-translate-y-0.5">
 							<InstagramIcon className="w-4 h-4" />
 						</a>
-						<a href={siteConfig.social.twitter} aria-label="Twitter" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent-500 transition-colors">
+						<a href={siteConfig.social.twitter} aria-label="Twitter" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent-500 transition-all duration-200 hover:-translate-y-0.5">
 							<XIcon className="w-4 h-4" />
 						</a>
-						<a href={siteConfig.social.linkedin} aria-label="LinkedIn" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent-500 transition-colors">
+						<a href={siteConfig.social.linkedin} aria-label="LinkedIn" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent-500 transition-all duration-200 hover:-translate-y-0.5">
 							<LinkedinIcon className="w-4 h-4" />
 						</a>
 					</div>
@@ -44,14 +45,21 @@ export default function Footer() {
 						</span>
 					</p>
 					<h3 className="text-white font-semibold mt-6 mb-3">Business Hours</h3>
-					<ul className="text-sm text-white/60 space-y-1.5">
-						{siteConfig.hours.map((h) => (
-							<li key={h.day} className="flex justify-between gap-4">
-								<span>{h.day.slice(0, 3)}:</span>
-								<span>{h.value}</span>
-							</li>
-						))}
-					</ul>
+					{hoursUniform ? (
+						<p className="text-sm text-white/60 flex justify-between gap-4 max-w-50">
+							<span>All Days</span>
+							<span>{siteConfig.hours[0].value}</span>
+						</p>
+					) : (
+						<ul className="text-sm text-white/60 space-y-1.5">
+							{siteConfig.hours.map((h) => (
+								<li key={h.day} className="flex justify-between gap-4">
+									<span>{h.day.slice(0, 3)}:</span>
+									<span>{h.value}</span>
+								</li>
+							))}
+						</ul>
+					)}
 				</div>
 
 				<div>
@@ -86,7 +94,7 @@ export default function Footer() {
 					</ul>
 					<a
 						href={`tel:${siteConfig.phonePrimary.replace(/\s/g, "")}`}
-						className="inline-block mt-5 rounded-full bg-accent-500 hover:bg-accent-600 text-white text-sm font-semibold px-5 py-2.5 transition-colors">
+						className="inline-block mt-5 rounded-full bg-accent-500 hover:bg-accent-600 text-white text-sm font-semibold px-5 py-2.5 transition-all duration-200 hover:scale-105 active:scale-95">
 						Call Us Today
 					</a>
 				</div>
@@ -94,7 +102,7 @@ export default function Footer() {
 
 			<div className="relative border-t border-white/10">
 				<div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/50">
-					<p>{siteConfig.name.toUpperCase()} — (Home Nursing Services)</p>
+					<p>{siteConfig.name} — {siteConfig.tagline}</p>
 					<p>
 						Copyright © {siteConfig.shortName} {year}. All rights reserved.
 					</p>

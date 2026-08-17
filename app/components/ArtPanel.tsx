@@ -1,16 +1,21 @@
+import Image from "next/image";
 import type { LucideIcon } from "lucide-react";
 
-// Original gradient artwork used in place of photography — swap for real
-// photos later by rendering an <Image> here instead.
+// Renders a Lorem Picsum photo (deterministic per `seed`) with a brand-tinted
+// overlay. Omit `seed` to fall back to the original gradient placeholder.
 export default function ArtPanel({
 	icon: Icon,
 	label,
 	tone = "brand",
+	seed,
+	priority = false,
 	className = "",
 }: {
 	icon: LucideIcon;
 	label?: string;
 	tone?: "brand" | "accent" | "mixed";
+	seed?: string;
+	priority?: boolean;
 	className?: string;
 }) {
 	const gradient =
@@ -27,8 +32,23 @@ export default function ArtPanel({
 	const position = isPositioned ? "" : "relative";
 
 	return (
-		<div className={`${position} overflow-hidden rounded-4xl ${gradient} ${className}`}>
-			<div className="absolute inset-0 dot-grid opacity-40" />
+		<div className={`${position} overflow-hidden rounded-4xl ${seed ? "bg-brand-900" : gradient} ${className}`}>
+			{seed ? (
+				<>
+					<Image
+						src={`https://picsum.photos/seed/${seed}/900/900`}
+						alt=""
+						fill
+						sizes="(min-width: 768px) 50vw, 100vw"
+						className="object-cover"
+						priority={priority}
+					/>
+					<div className="absolute inset-0 bg-linear-to-br from-brand-900/70 via-brand-900/20 to-accent-600/40 mix-blend-multiply" />
+					<div className="absolute inset-0 bg-brand-900/10" />
+				</>
+			) : (
+				<div className="absolute inset-0 dot-grid opacity-40" />
+			)}
 			<div className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full bg-white/10 blur-2xl" />
 			<div className="absolute -top-8 -left-8 w-32 h-32 rounded-full bg-white/10 blur-2xl" />
 			<div className="relative h-full w-full flex items-center justify-center">

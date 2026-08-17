@@ -54,7 +54,7 @@ export default function ContactForm() {
 				<button
 					type="submit"
 					disabled={submitted}
-					className="inline-flex items-center gap-2 rounded-full bg-accent-500 hover:bg-accent-600 disabled:opacity-70 text-white font-semibold px-6 py-3 transition-colors">
+					className="group inline-flex items-center gap-2 rounded-full bg-accent-500 hover:bg-accent-600 disabled:opacity-70 text-white font-semibold px-6 py-3 transition-all duration-200 hover:scale-105 active:scale-95 disabled:hover:scale-100">
 					{submitted ? (
 						<>
 							<CheckCircle2 className="w-4 h-4" />
@@ -63,11 +63,11 @@ export default function ContactForm() {
 					) : (
 						<>
 							Send Message
-							<Send className="w-4 h-4" />
+							<Send className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
 						</>
 					)}
 				</button>
-				{submitted && <p className="text-sm text-brand-600 mt-3">Thanks for reaching out — we&apos;ll get back to you shortly.</p>}
+				{submitted && <p className="text-sm text-brand-600 mt-3 animate-[fade-in_0.4s_ease-out]">Thanks for reaching out — we&apos;ll get back to you shortly.</p>}
 			</div>
 		</form>
 	);

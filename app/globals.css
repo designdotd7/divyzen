@@ -32,10 +32,60 @@
 	--color-accent-600: var(--accent-600);
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	background: var(--background);
 	color: var(--foreground);
 	font-family: var(--font-sans), ui-sans-serif, system-ui, Arial, Helvetica, sans-serif;
+}
+
+/* Slow ambient drift for gradient blob backgrounds */
+@keyframes blob-float {
+	0%,
+	100% {
+		transform: translate(0, 0) scale(1);
+	}
+	33% {
+		transform: translate(18px, -22px) scale(1.06);
+	}
+	66% {
+		transform: translate(-16px, 14px) scale(0.96);
+	}
+}
+
+.animate-blob {
+	animation: blob-float 18s ease-in-out infinite;
+}
+
+.animate-blob-delay {
+	animation-delay: -6s;
+}
+
+.animate-blob-delay-2 {
+	animation-delay: -12s;
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+		transform: translateY(-4px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+	.animate-blob {
+		animation: none;
+	}
 }
 
 /* Frosted-glass surfaces, used over gradient/blob backgrounds */

@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx next *)",
+      "Bash(npx --no-install playwright --version)",
+      "Bash(NODE_PATH=/Users/sandeep/.npm/_npx/e41f203b7505f1fb/node_modules node /private/tmp/claude-501/-Users-sandeep-Desktop-GitHub-divyzen/8f4cfd3a-f4e5-4d43-bfe6-54aa3a3f081b/scratchpad/shot.mjs http://localhost:3000 /private/tmp/claude-501/-Users-sandeep-Desktop-GitHub-divyzen/8f4cfd3a-f4e5-4d43-bfe6-54aa3a3f081b/scratchpad/home.png)"
+    ]
+  }
+}

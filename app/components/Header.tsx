@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Mail, Menu, MapPin, Phone, X } from "lucide-react";
 import { siteConfig } from "@/app/lib/siteConfig";
 import { FacebookIcon, InstagramIcon, LinkedinIcon, XIcon } from "@/app/components/SocialIcons";
@@ -11,9 +11,20 @@ import { FacebookIcon, InstagramIcon, LinkedinIcon, XIcon } from "@/app/componen
 export default function Header() {
 	const pathname = usePathname();
 	const [open, setOpen] = useState(false);
+	const [scrolled, setScrolled] = useState(false);
+
+	useEffect(() => {
+		const onScroll = () => setScrolled(window.scrollY > 8);
+		onScroll();
+		window.addEventListener("scroll", onScroll, { passive: true });
+		return () => window.removeEventListener("scroll", onScroll);
+	}, []);
 
 	return (
-		<header className="sticky top-0 z-50 w-full bg-white/70 backdrop-blur-xl border-b border-white/40 shadow-[0_1px_0_0_rgba(15,92,107,0.06)]">
+		<header
+			className={`sticky top-0 z-50 w-full backdrop-blur-xl border-b transition-all duration-300 ${
+				scrolled ? "bg-white/85 border-white/50 shadow-md shadow-brand-900/5" : "bg-white/70 border-white/40 shadow-[0_1px_0_0_rgba(15,92,107,0.06)]"
+			}`}>
 			{/* Top info bar */}
 			<div className="hidden lg:block bg-brand-900/85 backdrop-blur-xl text-white">
 				<div className="max-w-7xl mx-auto px-6 flex items-center justify-between text-xs py-2">
@@ -83,7 +94,7 @@ export default function Header() {
 					</a>
 					<Link
 						href="/appointment"
-						className="rounded-full bg-accent-500 hover:bg-accent-600 text-white text-sm font-semibold px-5 py-2.5 transition-colors">
+						className="rounded-full bg-accent-500 hover:bg-accent-600 text-white text-sm font-semibold px-5 py-2.5 transition-all duration-200 hover:scale-105 active:scale-95">
 						Make Appointment
 					</Link>
 				</div>

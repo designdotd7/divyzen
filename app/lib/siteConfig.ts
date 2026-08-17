@@ -9,7 +9,7 @@ export const siteConfig = {
 	phonePrimary: "+91 90000 00000",
 	phoneSecondary: "+91 90000 00001",
 	emergencyPhone: "+91 90000 00001",
-	email: "info@divyzencare.com",
+	email: "info@divyzen.com",
 
 	address: {
 		line1: "Opposite City Hospital, Gate No. 3",
@@ -61,25 +61,35 @@ export const coreServices: {
 		title: "Home Nursing Care",
 		icon: "Home",
 		summary: "Skilled nursing support delivered in the comfort and privacy of your own home.",
-		detail: "From wound care and medication management to routine health monitoring, our trained nurses bring hospital-grade care into your living room, so recovery happens somewhere familiar.",
+		detail:
+			"From wound care and medication management to routine health monitoring, our trained nurses bring hospital-grade care into your living room, so recovery happens somewhere familiar.",
 	},
 	{
 		slug: "senior-care",
 		title: "Senior & Elder Care",
 		icon: "Users",
 		summary: "Dignified, patient-centred support built around the daily rhythms of ageing family members.",
-		detail: "Mobility assistance, companionship, medication reminders and daily living support — designed to help seniors stay independent, safe and engaged at home.",
+		detail:
+			"Mobility assistance, companionship, medication reminders and daily living support — designed to help seniors stay independent, safe and engaged at home.",
 	},
 	{
 		slug: "intensive-care",
 		title: "Critical & Intensive Care",
 		icon: "Activity",
 		summary: "Advanced, closely monitored care for patients with complex or post-surgical needs.",
-		detail: "Our critical-care trained staff manage ventilator support, ICU-level monitoring equipment and post-operative recovery protocols, extending hospital-level vigilance into the home.",
+		detail:
+			"Our critical-care trained staff manage ventilator support, ICU-level monitoring equipment and post-operative recovery protocols, extending hospital-level vigilance into the home.",
 	},
 ];
 
-export const additionalOfferings = ["Nursing Care", "Patient Attendant Care", "Elder Care", "Baby & Postnatal Care", "Physiotherapy at Home", "Home Sample Collection & Blood Tests"];
+export const additionalOfferings = [
+	"Nursing Care",
+	"Patient Attendant Care",
+	"Elder Care",
+	"Baby & Postnatal Care",
+	"Physiotherapy at Home",
+	"Home Sample Collection & Blood Tests",
+];
 
 export const careStats = [
 	{ label: "Home Nursing", value: 95 },

@@ -3,6 +3,7 @@ import "./globals.css";
 import { fonts } from "./lib/fonts";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import LocationMap from "./components/LocationMap";
 import { siteConfig } from "./lib/siteConfig";
 
 export const metadata: Metadata = {
@@ -20,6 +21,7 @@ export default function RootLayout({
 			<body className="min-h-full flex flex-col">
 				<Header />
 				<main className="flex-1">{children}</main>
+				<LocationMap />
 				<Footer />
 			</body>
 		</html>

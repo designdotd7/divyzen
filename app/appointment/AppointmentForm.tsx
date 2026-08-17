@@ -16,7 +16,7 @@ export default function AppointmentForm() {
 
 	if (submitted) {
 		return (
-			<div className="flex flex-col items-center justify-center text-center py-16">
+			<div className="flex flex-col items-center justify-center text-center py-16 animate-[fade-in_0.4s_ease-out]">
 				<div className="w-16 h-16 rounded-full bg-brand-50 flex items-center justify-center mb-5">
 					<CheckCircle2 className="w-8 h-8 text-brand-600" />
 				</div>
@@ -91,9 +91,9 @@ export default function AppointmentForm() {
 			<div className="sm:col-span-2">
 				<button
 					type="submit"
-					className="inline-flex items-center gap-2 rounded-full bg-accent-500 hover:bg-accent-600 text-white font-semibold px-6 py-3 transition-colors">
+					className="group inline-flex items-center gap-2 rounded-full bg-accent-500 hover:bg-accent-600 text-white font-semibold px-6 py-3 transition-all duration-200 hover:scale-105 active:scale-95">
 					Make Appointment
-					<Send className="w-4 h-4" />
+					<Send className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
 				</button>
 			</div>
 		</form>

@@ -4,6 +4,7 @@ import { additionalOfferings, careStats, coreServices, homeFeatures, siteConfig 
 import StatBar from "@/app/components/StatBar";
 import ArtPanel from "@/app/components/ArtPanel";
 import BlobBackground from "@/app/components/BlobBackground";
+import Reveal from "@/app/components/Reveal";
 
 const serviceIcons = { Home: HomeIcon, Users, Activity };
 const featureIcons = { ShieldCheck, Stethoscope, Wallet };
@@ -15,9 +16,9 @@ export default function Home() {
 			<section className="relative overflow-hidden bg-linear-to-br from-brand-50 via-white to-accent-100">
 				<BlobBackground />
 				<div className="relative max-w-7xl mx-auto px-6 py-20 md:py-28 grid md:grid-cols-2 gap-16 items-center">
-					<div>
+					<Reveal direction="left">
 						<span className="inline-flex items-center gap-2 rounded-full glass text-brand-700 text-xs font-semibold px-4 py-1.5 shadow-sm">
-							<Sparkles className="w-3.5 h-3.5 text-accent-500" />
+							<Sparkles className="w-3.5 h-3.5 text-accent-500 animate-pulse" />
 							Trusted Home Nursing Care
 						</span>
 						<h1 className="mt-5 text-4xl md:text-5xl font-bold text-brand-900 leading-tight">We Care For Your Family, Right At Home</h1>
@@ -28,13 +29,13 @@ export default function Home() {
 						<div className="mt-8 flex flex-wrap items-center gap-4">
 							<Link
 								href="/appointment"
-								className="inline-flex items-center gap-2 rounded-full bg-accent-500 hover:bg-accent-600 text-white font-semibold px-6 py-3.5 shadow-lg shadow-accent-500/25 transition-colors">
+								className="group inline-flex items-center gap-2 rounded-full bg-accent-500 hover:bg-accent-600 text-white font-semibold px-6 py-3.5 shadow-lg shadow-accent-500/25 transition-all duration-200 hover:scale-105 hover:shadow-xl active:scale-95">
 								Make Appointment
-								<ArrowRight className="w-4 h-4" />
+								<ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
 							</Link>
 							<a
 								href={`tel:${siteConfig.phonePrimary.replace(/\s/g, "")}`}
-								className="inline-flex items-center gap-2 rounded-full glass text-brand-700 font-semibold px-6 py-3.5 hover:bg-white/80 transition-colors">
+								className="inline-flex items-center gap-2 rounded-full glass text-brand-700 font-semibold px-6 py-3.5 transition-all duration-200 hover:bg-white/80 hover:scale-105 active:scale-95">
 								<PhoneCall className="w-4 h-4" />
 								Call Us Today
 							</a>
@@ -56,12 +57,12 @@ export default function Home() {
 								<p className="text-xs text-gray-500">Verified caregivers</p>
 							</div>
 						</div>
-					</div>
+					</Reveal>
 
-					<div className="relative pb-8 pr-6 md:pb-10 md:pr-10">
-						<ArtPanel icon={HeartHandshake} tone="mixed" className="h-105 md:h-120 w-full shadow-2xl shadow-brand-900/20" />
+					<Reveal direction="right" delay={150} className="relative pb-8 pr-6 md:pb-10 md:pr-10">
+						<ArtPanel icon={HeartHandshake} tone="mixed" seed="divyzen-hero" priority className="h-105 md:h-120 w-full shadow-2xl shadow-brand-900/20" />
 
-						<div className="glass absolute -bottom-2 -left-2 md:left-4 rounded-2xl p-5 w-57.5 shadow-xl">
+						<div className="glass absolute -bottom-2 -left-2 md:left-4 rounded-2xl p-5 w-57.5 shadow-xl transition-transform duration-300 hover:-translate-y-1">
 							<div className="flex items-center gap-2.5 mb-3">
 								<div className="w-9 h-9 rounded-full bg-brand-600/10 flex items-center justify-center">
 									<ShieldCheck className="w-4.5 h-4.5 text-brand-700" />
@@ -82,25 +83,25 @@ export default function Home() {
 							<p className="text-2xl font-bold">24/7</p>
 							<p className="text-xs text-white/70">Care Availability</p>
 						</div>
-					</div>
+					</Reveal>
 				</div>
 			</section>
 
 			{/* Features */}
 			<section className="relative overflow-hidden max-w-7xl mx-auto px-6 py-16 md:py-20">
 				<div className="grid md:grid-cols-3 gap-6">
-					{homeFeatures.map((f) => {
+					{homeFeatures.map((f, i) => {
 						const Icon = featureIcons[f.icon];
 						return (
-							<div
-								key={f.title}
-								className="rounded-2xl border border-gray-100 bg-white p-8 hover:shadow-xl hover:shadow-brand-900/5 hover:-translate-y-1 transition-all duration-300">
-								<div className="w-12 h-12 rounded-xl bg-linear-to-br from-brand-500 to-brand-700 flex items-center justify-center mb-5 shadow-md shadow-brand-900/15">
-									<Icon className="w-6 h-6 text-white" />
+							<Reveal key={f.title} delay={i * 100}>
+								<div className="group rounded-2xl border border-gray-100 bg-white p-8 hover:shadow-xl hover:shadow-brand-900/5 hover:-translate-y-1 transition-all duration-300">
+									<div className="w-12 h-12 rounded-xl bg-linear-to-br from-brand-500 to-brand-700 flex items-center justify-center mb-5 shadow-md shadow-brand-900/15 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+										<Icon className="w-6 h-6 text-white" />
+									</div>
+									<h3 className="font-semibold text-gray-900 mb-2">{f.title}</h3>
+									<p className="text-sm text-gray-600 leading-relaxed">{f.text}</p>
 								</div>
-								<h3 className="font-semibold text-gray-900 mb-2">{f.title}</h3>
-								<p className="text-sm text-gray-600 leading-relaxed">{f.text}</p>
-							</div>
+							</Reveal>
 						);
 					})}
 				</div>
@@ -110,25 +111,32 @@ export default function Home() {
 			<section className="relative overflow-hidden bg-brand-50/60 py-16 md:py-20">
 				<BlobBackground />
 				<div className="relative max-w-7xl mx-auto px-6">
-					<div className="max-w-2xl mx-auto text-center mb-12">
+					<Reveal className="max-w-2xl mx-auto text-center mb-12">
 						<span className="text-accent-600 text-sm font-semibold uppercase tracking-wide">Our Services</span>
 						<h2 className="mt-3 text-3xl md:text-4xl font-bold text-brand-900">What Care We Provide</h2>
 						<p className="mt-4 text-gray-600">
 							Explore Divyzen&apos;s home care services, covering a range of needs and tailored to keep your family&apos;s well-being front and centre.
 						</p>
-					</div>
+					</Reveal>
 
 					<div className="grid md:grid-cols-3 gap-6">
-						{coreServices.map((s) => {
+						{coreServices.map((s, i) => {
 							const Icon = serviceIcons[s.icon];
 							return (
-								<div key={s.slug} className="rounded-2xl bg-white shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
-									<ArtPanel icon={Icon} tone="accent" className="h-40 w-full rounded-none group-hover:scale-[1.03] transition-transform duration-500" />
-									<div className="p-7">
-										<h3 className="font-semibold text-gray-900 mb-2">{s.title}</h3>
-										<p className="text-sm text-gray-600 leading-relaxed">{s.summary}</p>
+								<Reveal key={s.slug} delay={i * 100}>
+									<div className="rounded-2xl bg-white shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
+										<ArtPanel
+											icon={Icon}
+											tone="accent"
+											seed={`divyzen-${s.slug}`}
+											className="h-40 w-full rounded-none group-hover:scale-[1.03] transition-transform duration-500"
+										/>
+										<div className="p-7">
+											<h3 className="font-semibold text-gray-900 mb-2">{s.title}</h3>
+											<p className="text-sm text-gray-600 leading-relaxed">{s.summary}</p>
+										</div>
 									</div>
-								</div>
+								</Reveal>
 							);
 						})}
 					</div>
@@ -136,9 +144,9 @@ export default function Home() {
 					<div className="text-center mt-10">
 						<Link
 							href="/appointment"
-							className="inline-flex items-center gap-2 rounded-full bg-brand-700 hover:bg-brand-600 text-white font-semibold px-6 py-3.5 shadow-lg shadow-brand-900/20 transition-colors">
+							className="group inline-flex items-center gap-2 rounded-full bg-brand-700 hover:bg-brand-600 text-white font-semibold px-6 py-3.5 shadow-lg shadow-brand-900/20 transition-all duration-200 hover:scale-105 active:scale-95">
 							Make Appointment
-							<ArrowRight className="w-4 h-4" />
+							<ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
 						</Link>
 					</div>
 				</div>
@@ -146,31 +154,31 @@ export default function Home() {
 
 			{/* About preview with stats */}
 			<section className="max-w-7xl mx-auto px-6 py-16 md:py-20 grid md:grid-cols-2 gap-14 items-center">
-				<div>
+				<Reveal direction="left">
 					<span className="text-accent-600 text-sm font-semibold uppercase tracking-wide">About Divyzen</span>
 					<h2 className="mt-3 text-3xl md:text-4xl font-bold text-brand-900">We Handle Your Family&apos;s Care With Genuine Attention</h2>
 					<p className="mt-4 text-gray-600 leading-relaxed">
 						We approach every case with patience and precision. Our team is committed to understanding your family&apos;s specific needs and responding with a
 						plan that brings real peace of mind.
 					</p>
-					<Link href="/about" className="inline-flex items-center gap-2 mt-6 text-brand-600 font-semibold hover:text-brand-700">
+					<Link href="/about" className="group inline-flex items-center gap-2 mt-6 text-brand-600 font-semibold hover:text-brand-700">
 						Learn more about us
-						<ArrowRight className="w-4 h-4" />
+						<ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
 					</Link>
-				</div>
-				<div className="relative rounded-3xl border border-gray-100 bg-white p-8 shadow-sm">
+				</Reveal>
+				<Reveal direction="right" delay={150} className="relative rounded-3xl border border-gray-100 bg-white p-8 shadow-sm">
 					<div className="grid sm:grid-cols-2 gap-x-8 gap-y-6">
 						{careStats.map((s) => (
 							<StatBar key={s.label} label={s.label} value={s.value} />
 						))}
 					</div>
-				</div>
+				</Reveal>
 			</section>
 
 			{/* CTA / Emergency band */}
 			<section className="relative overflow-hidden bg-brand-900 text-white">
 				<BlobBackground variant="dark" />
-				<div className="relative max-w-7xl mx-auto px-6 py-14 grid md:grid-cols-[1fr_auto] gap-8 items-center">
+				<Reveal className="relative max-w-7xl mx-auto px-6 py-14 grid md:grid-cols-[1fr_auto] gap-8 items-center">
 					<div>
 						<h2 className="text-2xl md:text-3xl font-bold">Supportive, Compassionate &amp; Qualified Nursing Care</h2>
 						<p className="mt-3 text-white/70 max-w-2xl">
@@ -180,11 +188,11 @@ export default function Home() {
 					</div>
 					<div className="glass-dark rounded-2xl px-6 py-4 flex flex-col items-start md:items-end gap-1">
 						<span className="text-xs text-white/60 uppercase tracking-wide">Emergency Call</span>
-						<a href={`tel:${siteConfig.emergencyPhone.replace(/\s/g, "")}`} className="text-2xl font-bold text-accent-500 hover:text-accent-400">
+						<a href={`tel:${siteConfig.emergencyPhone.replace(/\s/g, "")}`} className="text-2xl font-bold text-accent-500 hover:text-accent-400 transition-colors">
 							{siteConfig.emergencyPhone}
 						</a>
 					</div>
-				</div>
+				</Reveal>
 			</section>
 		</div>
 	);
