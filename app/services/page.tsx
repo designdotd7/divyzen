@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { coreServices } from "@/app/lib/siteConfig";
-import { serviceIconMap } from "@/app/lib/icons";
+import { serviceButtonBg, serviceIconMap, serviceToneMap } from "@/app/lib/icons";
 import ArtPanel from "@/app/components/ArtPanel";
 import BlobBackground from "@/app/components/BlobBackground";
 import Reveal from "@/app/components/Reveal";
@@ -33,7 +33,7 @@ export default function ServicesPage() {
 								<div className="h-full flex flex-col rounded-2xl bg-white border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
 									<ArtPanel
 										icon={Icon}
-										tone="mixed"
+										tone={serviceToneMap[s.icon]}
 										seed={`divyzen-${s.slug}`}
 										className="h-44 w-full rounded-none group-hover:scale-[1.03] transition-transform duration-500"
 									/>
@@ -42,7 +42,7 @@ export default function ServicesPage() {
 										<p className="text-sm text-gray-600 leading-relaxed flex-1">{s.summary}</p>
 										<Link
 											href="/appointment"
-											className="group/btn inline-flex items-center gap-2 mt-6 rounded-full bg-brand-700 hover:bg-brand-600 text-white text-sm font-semibold px-5 py-2.5 transition-all duration-200 hover:scale-105 active:scale-95 self-start">
+											className={`group/btn inline-flex items-center gap-2 mt-6 rounded-full ${serviceButtonBg[s.icon]} text-white text-sm font-semibold px-5 py-2.5 transition-all duration-200 hover:scale-105 active:scale-95 self-start`}>
 											{s.buttonLabel}
 											<ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover/btn:translate-x-1" />
 										</Link>

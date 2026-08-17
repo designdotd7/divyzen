@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, HeartHandshake, MessageCircle, PhoneCall, ShieldCheck, Sparkles } from "lucide-react";
 import { coreServices, howItWorks, siteConfig, whyChooseUs } from "@/app/lib/siteConfig";
-import { serviceIconMap, whyChooseIconMap } from "@/app/lib/icons";
+import { serviceIconMap, serviceTextColor, serviceToneMap, stepAccentColor, whyChooseIconBg, whyChooseIconMap } from "@/app/lib/icons";
 import ArtPanel from "@/app/components/ArtPanel";
 import BlobBackground from "@/app/components/BlobBackground";
 import Reveal from "@/app/components/Reveal";
@@ -72,7 +72,7 @@ export default function Home() {
 							<ul className="space-y-2">
 								{coreServices.slice(0, 4).map((s) => (
 									<li key={s.slug} className="flex items-center gap-2 text-sm text-gray-700">
-										<CheckCircle2 className="w-3.5 h-3.5 text-accent-500 shrink-0" />
+										<CheckCircle2 className={`w-3.5 h-3.5 shrink-0 ${serviceTextColor[s.icon]}`} />
 										{s.title}
 									</li>
 								))}
@@ -132,7 +132,7 @@ export default function Home() {
 									<div className="h-full flex flex-col rounded-2xl bg-white shadow-sm border border-gray-100 overflow-hidden hover:shadow-xl transition-shadow duration-300 group">
 										<ArtPanel
 											icon={Icon}
-											tone="accent"
+											tone={serviceToneMap[s.icon]}
 											seed={`divyzen-${s.slug}`}
 											className="h-40 w-full rounded-none group-hover:scale-[1.03] transition-transform duration-500"
 										/>
@@ -141,7 +141,7 @@ export default function Home() {
 											<p className="text-base text-gray-600 leading-relaxed flex-1">{s.summary}</p>
 											<Link
 												href="/appointment"
-												className="group/btn inline-flex items-center gap-1.5 mt-5 text-base font-semibold text-brand-600 hover:text-brand-700">
+												className={`group/btn inline-flex items-center gap-1.5 mt-5 text-base font-semibold ${serviceTextColor[s.icon]} hover:opacity-80`}>
 												{s.buttonLabel}
 												<ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover/btn:translate-x-1" />
 											</Link>
@@ -166,7 +166,7 @@ export default function Home() {
 						return (
 							<Reveal key={f.title} delay={i * 100}>
 								<div className="group h-full rounded-2xl border border-gray-100 bg-white p-7 hover:shadow-xl hover:shadow-brand-900/5 hover:-translate-y-1 transition-all duration-300">
-									<div className="w-12 h-12 rounded-xl bg-linear-to-br from-brand-500 to-brand-700 flex items-center justify-center mb-5 shadow-md shadow-brand-900/15 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+									<div className={`w-12 h-12 rounded-xl ${whyChooseIconBg[f.icon]} flex items-center justify-center mb-5 shadow-md shadow-brand-900/15 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3`}>
 										<Icon className="w-6 h-6 text-white" />
 									</div>
 									<h3 className="text-lg font-semibold text-gray-900 mb-2">{f.title}</h3>
@@ -190,7 +190,7 @@ export default function Home() {
 						{howItWorks.map((step, i) => (
 							<Reveal key={step.step} delay={i * 100}>
 								<div className="h-full rounded-2xl glass p-7 shadow-sm">
-									<span className="text-3xl font-bold text-accent-500/70">{step.step}</span>
+									<span className={`text-3xl font-bold ${stepAccentColor[i]}`}>{step.step}</span>
 									<h3 className="mt-3 text-lg font-semibold text-gray-900">{step.title}</h3>
 									<p className="mt-2 text-base text-gray-600 leading-relaxed">{step.text}</p>
 								</div>

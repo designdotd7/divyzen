@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Clock, MessageCircle, PhoneCall } from "lucide-react";
 import { coreServices, siteConfig } from "@/app/lib/siteConfig";
-import { serviceIconMap } from "@/app/lib/icons";
+import { serviceIconBg, serviceIconMap } from "@/app/lib/icons";
 import ServiceEnquiryForm from "@/app/components/ServiceEnquiryForm";
 import BlobBackground from "@/app/components/BlobBackground";
 import Reveal from "@/app/components/Reveal";
@@ -66,7 +66,7 @@ export default function AppointmentPage() {
 								const Icon = serviceIconMap[s.icon];
 								return (
 									<li key={s.slug} className="flex items-center gap-3 text-sm text-gray-700">
-										<span className="w-8 h-8 shrink-0 rounded-lg bg-linear-to-br from-brand-500 to-accent-500 flex items-center justify-center">
+										<span className={`w-8 h-8 shrink-0 rounded-lg ${serviceIconBg[s.icon]} flex items-center justify-center`}>
 											<Icon className="w-4 h-4 text-white" />
 										</span>
 										{s.title}

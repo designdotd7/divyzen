@@ -12,10 +12,16 @@ export const metadata: Metadata = {
 };
 
 const infoCards = [
-	{ icon: Phone, title: "Call Us", lines: [siteConfig.phonePrimary], href: `tel:${siteConfig.phonePrimary.replace(/\s/g, "")}` },
-	{ icon: MessageCircle, title: "WhatsApp Us", lines: [siteConfig.phonePrimary], href: `https://wa.me/${siteConfig.whatsappNumber}` },
-	{ icon: Mail, title: "Email", lines: [siteConfig.email], href: `mailto:${siteConfig.email}` },
-	{ icon: MapPin, title: "Address", lines: [siteConfig.address.line1, siteConfig.address.line2] },
+	{ icon: Phone, title: "Call Us", lines: [siteConfig.phonePrimary], href: `tel:${siteConfig.phonePrimary.replace(/\s/g, "")}`, bg: "bg-linear-to-br from-sky-500 to-sky-700" },
+	{
+		icon: MessageCircle,
+		title: "WhatsApp Us",
+		lines: [siteConfig.phonePrimary],
+		href: `https://wa.me/${siteConfig.whatsappNumber}`,
+		bg: "bg-linear-to-br from-emerald-500 to-emerald-700",
+	},
+	{ icon: Mail, title: "Email", lines: [siteConfig.email], href: `mailto:${siteConfig.email}`, bg: "bg-linear-to-br from-amber-500 to-amber-700" },
+	{ icon: MapPin, title: "Address", lines: [siteConfig.address.line1, siteConfig.address.line2], bg: "bg-linear-to-br from-rose-500 to-rose-700" },
 ];
 
 export default function ContactPage() {
@@ -37,7 +43,7 @@ export default function ContactPage() {
 					{infoCards.map((c, i) => {
 						const Card = (
 							<div className="h-full rounded-2xl border border-gray-100 bg-white p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-								<div className="w-11 h-11 rounded-xl bg-linear-to-br from-brand-500 to-accent-500 flex items-center justify-center mb-4">
+								<div className={`w-11 h-11 rounded-xl ${c.bg} flex items-center justify-center mb-4`}>
 									<c.icon className="w-5 h-5 text-white" />
 								</div>
 								<h3 className="font-semibold text-gray-900 text-sm mb-2">{c.title}</h3>
@@ -70,7 +76,7 @@ export default function ContactPage() {
 					</Reveal>
 
 					<Reveal direction="right" delay={150} className="relative min-h-80">
-						<ArtPanel icon={MapPin} tone="brand" seed="divyzen-office" className="absolute inset-0 w-full h-full" />
+						<ArtPanel icon={MapPin} tone="sky" seed="divyzen-office" className="absolute inset-0 w-full h-full" />
 						<div className="glass absolute bottom-6 left-6 right-6 rounded-2xl p-5">
 							<p className="font-semibold text-brand-900">{siteConfig.address.line1}</p>
 							<p className="text-sm text-gray-600 mt-0.5">{siteConfig.address.line2}</p>

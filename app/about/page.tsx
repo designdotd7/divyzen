@@ -12,9 +12,24 @@ export const metadata: Metadata = {
 };
 
 const values = [
-	{ icon: HeartPulse, title: "Patient First", text: "Every decision starts with what's best for the person in our care, not the schedule." },
-	{ icon: ShieldCheck, title: "Verified & Trained", text: "Every caregiver is background-checked, trained and supervised throughout their placement." },
-	{ icon: Users, title: "Family Partnership", text: "We keep families informed and involved, treating care as a shared responsibility." },
+	{
+		icon: HeartPulse,
+		title: "Patient First",
+		text: "Every decision starts with what's best for the person in our care, not the schedule.",
+		bg: "bg-linear-to-br from-rose-500 to-rose-700",
+	},
+	{
+		icon: ShieldCheck,
+		title: "Verified & Trained",
+		text: "Every caregiver is background-checked, trained and supervised throughout their placement.",
+		bg: "bg-linear-to-br from-sky-500 to-sky-700",
+	},
+	{
+		icon: Users,
+		title: "Family Partnership",
+		text: "We keep families informed and involved, treating care as a shared responsibility.",
+		bg: "bg-linear-to-br from-emerald-500 to-emerald-700",
+	},
 ];
 
 export default function AboutPage() {
@@ -31,8 +46,8 @@ export default function AboutPage() {
 
 			<section className="max-w-7xl mx-auto px-6 py-16 md:py-20 grid md:grid-cols-2 gap-16 items-center">
 				<Reveal direction="left" className="relative h-105 md:h-115 order-2 md:order-1">
-					<ArtPanel icon={HeartPulse} tone="brand" seed="divyzen-about-nurse" label="Home Care Visits" className="absolute top-0 left-0 w-[68%] h-[62%] shadow-xl shadow-brand-900/15" />
-					<ArtPanel icon={Users} tone="accent" seed="divyzen-about-family" className="absolute bottom-0 right-0 w-[58%] h-[48%] shadow-xl shadow-accent-500/20 border-4 border-white" />
+					<ArtPanel icon={HeartPulse} tone="violet" seed="divyzen-about-nurse" label="Home Care Visits" className="absolute top-0 left-0 w-[68%] h-[62%] shadow-xl shadow-brand-900/15" />
+					<ArtPanel icon={Users} tone="emerald" seed="divyzen-about-family" className="absolute bottom-0 right-0 w-[58%] h-[48%] shadow-xl shadow-accent-500/20 border-4 border-white" />
 				</Reveal>
 
 				<Reveal direction="right" delay={150} className="order-1 md:order-2 space-y-4 text-gray-600 leading-relaxed">
@@ -78,7 +93,7 @@ export default function AboutPage() {
 					{values.map((v, i) => (
 						<Reveal key={v.title} delay={i * 100}>
 							<div className="group rounded-2xl bg-white p-8 shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-								<div className="w-12 h-12 rounded-xl bg-linear-to-br from-brand-500 to-accent-500 flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
+								<div className={`w-12 h-12 rounded-xl ${v.bg} flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3`}>
 									<v.icon className="w-6 h-6 text-white" />
 								</div>
 								<h3 className="font-semibold text-gray-900 mb-2">{v.title}</h3>
